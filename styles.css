@@ -1,0 +1,17 @@
+
+
+header {
+    border: solid 1px black;
+}
+
+main {
+    border: solid 1px red;
+}
+
+footer {
+    border: solid 1px blue;
+}
+
+nav {
+    border: solid 1px green;
+}

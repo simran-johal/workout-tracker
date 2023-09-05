@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +9,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Workout Planner</title>
+    <link rel="stylesheet" href="styles.css">
 
   </head>
 
@@ -15,9 +18,135 @@
 
   <body>
 
-		<header></header>
-		<main></main>
-		<footer></footer>
+		<header>
+      <h1>Weekly Workout Planner</h1>
+    </header>
+
+		<main>
+
+      
+
+      <nav>
+        <h3>Workouts</h3>
+
+        <button id="add-workout-button">Add Workout</button>
+
+      </nav>
+
+
+      
+
+     
+      
+      <div id="add-workout-modal" class="modal">
+        <div class="add-workout-modal-content">
+
+
+          <div class="close"></div>
+          <h2><!--Modal Title--></h2>
+          <p><!--This is the modal content. --></p>
+
+    
+          <form id="add-workout-form">
+
+            <label for="date-picking">Date:</label>
+              <input type="date" id="date-picking" name="date-picker">
+            <label for="time-picking">Time:</label>
+              <input type="time" id="time-picking" name="time-picker">
+            
+            <label for="workout-type">Workout Type</label>
+            <select id="workout-type" name="dropdown">
+                <option value="weight-training">Weight Training</option>
+                <option value="circuit-training">Circuit Training</option>
+            </select>
+            
+            <button type="submit">Add</button>
+            <button type="submit">Cancel</button>
+
+            
+
+          </form>
+        
+        
+        
+        </div>
+      </div>
+
+
+      <button id="add-exercise-button">Add Exercise</button>
+      
+      <div id="add-exercise-modal" class="modal">
+        <div class="add-exercise-modal-content">
+
+
+          <div class="close"></div>
+          <h2><!--Modal Title--></h2>
+          <p><!--This is the modal content. --></p>
+
+    
+          <form id="add-exercise-form">
+
+            <label for="exercise-name">Exercise:</label>
+            <textarea id="exercise-name" name="textbox-for-exercise" rows="1" cols="35"></textarea>
+            
+            <label for="number-of-sets">Sets:</label>
+            <input id="number-of-sets" type="number" min="0" max="10">
+
+            <label for="number-of-reps">Reps:</label>
+            <input id="number-of-reps" type="number" min="0" max="30">
+
+            <label for="rest-time">Rest Time (mins):</label>
+            <input id="rest-time" type="number" min="0" max="30" step="0.5">
+
+            <label for="rir">Reps in reserve:</label>
+            <select id="rir">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+
+            
+
+
+
+            <button type="submit">Add</button>
+            <button type="submit">Cancel</button>
+
+          </form>
+        
+        
+        
+        </div>
+      </div>
+
+
+
+
+
+      
+    </main>
+	
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+      <p>Copyright Simran Johal</p>
+    </footer>
 	    <script src="script.js"></script>
 
         
