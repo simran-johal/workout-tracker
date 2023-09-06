@@ -70,3 +70,32 @@ function userWorkoutsArrayMaker(){
 // getting the user inputs to use in ArrayMakers using modals
 
 
+// modal architecture
+
+
+let containerModal = document.getElementById("my-add-workout-modal-container"); // modal component container
+let btn = document.getElementById("open-modal-add-workout-button") // button to open the modal component
+let cancelButton = document.getElementsByClassName("cancel")[0];
+
+btn.addEventListener('click', function () { // if button clicked modal opens (display = block)
+    containerModal.style.display = "block";
+})
+
+containerModal.addEventListener('click', function (event) { // 
+    if (event.target == containerModal) {
+        containerModal.style.display = "none"
+    } 
+        
+    
+})
+
+cancelButton.addEventListener('click', function () { // if X clicked modal removed (display = none)
+    containerModal.style.display = "none";
+})
+
+
+
+
+
+
+

@@ -28,49 +28,46 @@
 
       <nav>
         <h3>Workouts</h3>
-
-        <button id="add-workout-button">Add Workout</button>
-
+        <button id="open-modal-add-workout-button">Add Workout</button>
       </nav>
 
-
       
+      <!-- ADD WORKOUT MODAL UNIT -->
+      <div id="my-add-workout-modal-container" class="my-add-workout-modal">
 
-     
-      
-      <div id="add-workout-modal" class="modal">
         <div class="add-workout-modal-content">
 
-
-          <div class="close"></div>
-          <h2><!--Modal Title--></h2>
-          <p><!--This is the modal content. --></p>
-
-    
+          <div class="cancel">&times;</div> 
+          <h2>Input Data</h2>
+          <p>input your data below</p>
+  
           <form id="add-workout-form">
-
             <label for="date-picking">Date:</label>
-              <input type="date" id="date-picking" name="date-picker">
+            <input type="date" id="date-picking" name="date-picker">
+
             <label for="time-picking">Time:</label>
-              <input type="time" id="time-picking" name="time-picker">
-            
+            <input type="time" id="time-picking" name="time-picker">
+
             <label for="workout-type">Workout Type</label>
+
             <select id="workout-type" name="dropdown">
                 <option value="weight-training">Weight Training</option>
                 <option value="circuit-training">Circuit Training</option>
             </select>
             
             <button type="submit">Add</button>
-            <button type="submit">Cancel</button>
+          </form>  
 
-            
-
-          </form>
-        
-        
-        
         </div>
+
       </div>
+
+
+
+
+
+
+
 
 
       <button id="add-exercise-button">Add Exercise</button>
@@ -79,7 +76,7 @@
         <div class="add-exercise-modal-content">
 
 
-          <div class="close"></div>
+          <div class="cancel"></div>
           <h2><!--Modal Title--></h2>
           <p><!--This is the modal content. --></p>
 
@@ -117,7 +114,6 @@
 
 
             <button type="submit">Add</button>
-            <button type="submit">Cancel</button>
 
           </form>
         
