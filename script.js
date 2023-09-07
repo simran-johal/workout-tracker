@@ -1,4 +1,61 @@
 
+// add workout button modal architecture:
+
+let containerModal1 = document.getElementById("add-workout-modal-container"); // modal component container
+let openModalBtn1 = document.getElementById("open-modal-add-workout-button") // button to open the modal component
+let cancelButton1 = document.getElementById('cancel1')
+
+openModalBtn1.addEventListener('click', function () { // if button clicked modal opens (display = block)
+    containerModal1.style.display = "block";
+})
+
+containerModal1.addEventListener('click', function (event) { // 
+    if (event.target == containerModal1) {
+        containerModal1.style.display = "none"
+    } 
+    
+})
+
+cancelButton1.addEventListener('click', function () { // if X clicked modal removed (display = none)
+    containerModal1.style.display = "none";
+})
+
+
+
+// add exercise button modal architecture
+
+let containerModal2 = document.getElementById("add-exercise-modal-container"); // modal component container
+let openModalBtn2 = document.getElementById("open-modal-add-exercise-button") // button to open the modal component
+let cancelButton2 = document.getElementById('cancel2')
+
+openModalBtn2.addEventListener('click', function () { // if button clicked modal opens (display = block)
+    containerModal2.style.display = "block";
+})
+
+containerModal2.addEventListener('click', function (event) { // 
+    if (event.target == containerModal2) {
+        containerModal2.style.display = "none"
+    } 
+    
+})
+
+cancelButton2.addEventListener('click', function () { // if X clicked modal removed (display = none)
+    containerModal2.style.display = "none";
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -41,23 +98,26 @@ function Workout(dateAndTime, workoutType) {
 let workoutOne = new Workout("", "Weights")
 
 
-// function to take user input, make a new obj by using 'new' syntax on constructor then push to array
+// function to take user input, make a new obj by using 'new' syntax on constructor then push to array:
 
-function userExercisesArrayMaker(){
+function exerciseObjMakerAndArrayStorer(){
     
     let something = new Exercise(userInput, ui, ui, ui, ui)
     myExerciseList.push(something)
 
 }
 
-function userWorkoutsArrayMaker(){
+function workoutObjMakerAndArrayStorer(){
     
     let somethingTwo = new Workout(userInput, ui)
     myWorkoutList.push(somethingTwo)
 
 }
 
-// how do i build functionality to add repeated
+// how do i build functionality to add repeated sets of data?
+
+
+//---------------------------------------------------------------------------------------------------------------
 
 
 
@@ -67,31 +127,118 @@ function userWorkoutsArrayMaker(){
 
 
 
-// getting the user inputs to use in ArrayMakers using modals
 
 
-// modal architecture
 
 
-let containerModal = document.getElementById("my-add-workout-modal-container"); // modal component container
-let btn = document.getElementById("open-modal-add-workout-button") // button to open the modal component
-let cancelButton = document.getElementsByClassName("cancel")[0];
 
-btn.addEventListener('click', function () { // if button clicked modal opens (display = block)
-    containerModal.style.display = "block";
-})
 
-containerModal.addEventListener('click', function (event) { // 
-    if (event.target == containerModal) {
-        containerModal.style.display = "none"
-    } 
-        
+
+
+
+
+// correct inputting of data and retrieving the data:
+// form validation (data type, required fields, data range, prevent submission):
+
+
+let submitWorkoutBtn = document.getElementById("submit-workout") // submit workout data
+    submitWorkoutBtn.addEventListener('click', function (event) {
+        event.preventDefault()
     
+        const addWorkoutForm = document.getElementById('add-workout-form') // retrieving the data
+        const addWorkoutFormData = new FormData(addWorkoutForm)
+
+        let date = addWorkoutFormData.get('date-picker')
+        let time = addWorkoutFormData.get('time-picker')
+        let workoutType = addWorkoutFormData.get('workout-selector')
+
+        containerModal1.style.display = "none"
+
+        if (!date || !time || !workoutType) {
+            alert("all fields are required")
+            return;
+        }
+
+
+
+        
+        
+        
+        console.log("date", date, "time", time, "workout type", workoutType)
+
 })
 
-cancelButton.addEventListener('click', function () { // if X clicked modal removed (display = none)
-    containerModal.style.display = "none";
-})
+
+
+
+
+
+let submitExerciseBtn = document.getElementById('submit-exercise') // submit exercise data
+    submitExerciseBtn.addEventListener('click', function (event) {
+        event.preventDefault()
+        
+        const addExerciseForm = document.getElementById('add-exercise-form')
+
+        const addExerciseFormData = new FormData(addExerciseForm)
+
+        let exerciseName = addExerciseFormData.get('textbox-for-exercise')
+        let setsNumber = addExerciseFormData.get('textbox-for-sets')
+        let repsNumber =addExerciseFormData.get('textbox-for-reps')
+        let restTime = addExerciseFormData.get('textbox-for-rest')
+        let rir = addExerciseFormData.get('textbox-for-rir')
+
+        containerModal2.style.display = "none"
+        
+        console.log(
+            "exercise name", exerciseName,
+            "sets number", setsNumber,
+            "reps number", repsNumber,
+            "rest time", restTime,
+            "rir", rir
+        )
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// give our arrayMaker functions access to the data to then store in arrays:
+
+
+
 
 
 

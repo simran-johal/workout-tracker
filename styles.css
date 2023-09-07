@@ -16,8 +16,9 @@ nav {
     border: solid 1px green;
 }
 
+/* ADD WORKOUT BUTTON MODAL */
 
-.my-add-workout-modal { /* how we position it on the page */
+.add-workout-modal-container { /* how we position it on the page */
     display: none; /* Hidden by default */
     z-index: 1; /* Sit on top */
     position: fixed; /* Stay in place */
@@ -53,3 +54,56 @@ nav {
 }
 
 
+
+
+
+
+
+
+/* ADD EXERCISE BUTTON MODAL */
+
+.add-exercise-modal-container { /* how we position it on the page */
+    display: none; /* Hidden by default */
+    z-index: 1; /* Sit on top */
+    position: fixed; /* Stay in place */
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+    /* Overlay background */
+    
+}
+
+/* STYLE THE MODAL COMPONENT INPUT FORM HERE */
+.add-exercise-modal-content { /* the component window styling */
+    background-color: #fefefe;
+    margin: 25% auto; /* Centered */
+    padding: 5%;
+    border: 1px solid black;
+    width: 50%;
+    max-width: 600px;
+
+}
+
+#cancel1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#cancel1:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#cancel2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#cancel2:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
