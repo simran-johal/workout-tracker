@@ -137,73 +137,134 @@ function workoutObjMakerAndArrayStorer(){
 
 
 
-// correct inputting of data and retrieving the data:
+// inputting of data and retrieving the data:
 // form validation (data type, required fields, data range, prevent submission):
 
 
-let submitWorkoutBtn = document.getElementById("submit-workout") // submit workout data
-    submitWorkoutBtn.addEventListener('click', function (event) {
-        event.preventDefault()
+document.getElementById("submit-workout").addEventListener('click', function (event) {
+
+    event.preventDefault()
     
-        const addWorkoutForm = document.getElementById('add-workout-form') // retrieving the data
-        const addWorkoutFormData = new FormData(addWorkoutForm)
+    const addWorkoutForm = document.getElementById('add-workout-form') // retrieving the data
+    const addWorkoutFormData = new FormData(addWorkoutForm)
 
-        let date = addWorkoutFormData.get('date-picker')
-        let time = addWorkoutFormData.get('time-picker')
-        let workoutType = addWorkoutFormData.get('workout-selector')
+    let date = addWorkoutFormData.get('date-picker')
+    let time = addWorkoutFormData.get('time-picker')
+    let workoutType = addWorkoutFormData.get('workout-selector')
 
-        containerModal1.style.display = "none"
+    let dateError = document.getElementById('date-error')// select error message elements
+    let timeError = document.getElementById('time-error')
+    let workoutTypeError = document.getElementById('workout-type-error')
 
-        if (!date || !time || !workoutType) {
-            alert("all fields are required")
-            return;
-        }
+    resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError)
 
-
+    requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) // pass args to requiredFields func
 
         
-        
-        
-        console.log("date", date, "time", time, "workout type", workoutType)
+    if (fullFields) {
+            containerModal1.style.display = "none" // if notFullFields back to false > finish & exit
+    }
+       
+    console.log("date", date, "time", time, "workout type", workoutType)
 
 })
 
+let fullFields = true
+
+
+function resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError) {
+
+    dateError.textContent = "" 
+    timeError.textContent = ""
+    workoutTypeError.textContent = ""
+
+}
+
+function requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) { // pass args to requiredFields func
+
+    if (!date) {
+        dateError.textContent = "Date is required"
+        fullFields = false
+    }
+
+    if (!time) {
+        timeError.textContent = "Time is required"
+        fullFields = false
+    }
+
+    if (!workoutType) {
+        workoutTypeError.textContent = "Time is required"
+        fullFields = false
+    }
+
+    if (!fullFields) { // if notFullFields not false e.g. true > do not finish &
+        return;
+    } 
+
+    if (fullFields) {
+        containerModal1.style.display = "none"
+    }
+
+}
+
+function requiredRanges() { // ranges of data to add
+
+}
 
 
 
 
+document.getElementById('submit-exercise').addEventListener('click', function (event) {
 
-let submitExerciseBtn = document.getElementById('submit-exercise') // submit exercise data
-    submitExerciseBtn.addEventListener('click', function (event) {
-        event.preventDefault()
+    event.preventDefault()
         
-        const addExerciseForm = document.getElementById('add-exercise-form')
+    const addExerciseForm = document.getElementById('add-exercise-form') // retrieving the data
+    const addExerciseFormData = new FormData(addExerciseForm)
 
-        const addExerciseFormData = new FormData(addExerciseForm)
+    let exerciseName = addExerciseFormData.get('textbox-for-exercise') // the individual properties
+    let setsNumber = addExerciseFormData.get('textbox-for-sets')
+    let repsNumber =addExerciseFormData.get('textbox-for-reps')
+    let restTime = addExerciseFormData.get('textbox-for-rest')
+    let rir = addExerciseFormData.get('textbox-for-rir')
 
-        let exerciseName = addExerciseFormData.get('textbox-for-exercise')
-        let setsNumber = addExerciseFormData.get('textbox-for-sets')
-        let repsNumber =addExerciseFormData.get('textbox-for-reps')
-        let restTime = addExerciseFormData.get('textbox-for-rest')
-        let rir = addExerciseFormData.get('textbox-for-rir')
+    let exerciseNameError = document.getElementById('exercise-name-error') // selecting & assigning the divs to display error messages
+    let setsNumberError = document.getElementById('number-of-set-error')
+    let repsNumberError = document.getElementById('nuumber-of-reps-error')
+    let restTimeError = document.getElementById('rest-time-error')
+    let rirError = document.getElementById('reps-in-reserve-error')
 
-        containerModal2.style.display = "none"
+
+    resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
+
+    requiredFieldsExercise() // pass args to requiredFields func
+
+    containerModal2.style.display = "none"
         
-        console.log(
-            "exercise name", exerciseName,
-            "sets number", setsNumber,
-            "reps number", repsNumber,
-            "rest time", restTime,
-            "rir", rir
+
+    console.log(
+        "exercise name", exerciseName,
+        "sets number", setsNumber,
+        "reps number", repsNumber,
+        "rest time", restTime,
+        "rir", rir
         )
     })
 
 
 
+function resetErrorMessagesExerciseBtn() {
 
+    exerciseNameError.textContent = ""
+    setsNumberError.textContent = ""
+    repsNumberError.textContent = ""
+    restTimeError.textContent = ""
+    rirError.textContent = ""
 
+}
 
+function requiredFieldsExercise() {
 
+}
 
 
 

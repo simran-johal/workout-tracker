@@ -42,17 +42,17 @@ nav {
 
 }
 
-.cancel {
+
+#cancel1 {
     font-size: 28px;
     font-weight: bold;
 }
 
-.cancel:hover {
+#cancel1:hover {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
-
 
 
 
@@ -86,16 +86,6 @@ nav {
 
 }
 
-#cancel1 {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-#cancel1:hover {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 #cancel2 {
     font-size: 28px;
@@ -106,4 +96,8 @@ nav {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.error-message {
+    color: red;
 }
