@@ -158,18 +158,16 @@ document.getElementById("submit-workout").addEventListener('click', function (ev
 
     resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError)
 
-    requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) // pass args to requiredFields func
-
-        
-    if (fullFields) {
-            containerModal1.style.display = "none" // if notFullFields back to false > finish & exit
-    }
-       
+    requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) // pass args to requiredFields func    
+    
     console.log("date", date, "time", time, "workout type", workoutType)
+
+    
 
 })
 
-let fullFields = true
+let fullFieldsWorkout = true
+
 
 
 function resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError) {
@@ -182,34 +180,34 @@ function resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError) {
 
 function requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) { // pass args to requiredFields func
 
+    fullFieldsWorkout = true
+
+
     if (!date) {
         dateError.textContent = "Date is required"
-        fullFields = false
+        fullFieldsWorkout = false
     }
 
     if (!time) {
         timeError.textContent = "Time is required"
-        fullFields = false
+        fullFieldsWorkout = false
     }
 
     if (!workoutType) {
         workoutTypeError.textContent = "Time is required"
-        fullFields = false
+        fullFieldsWorkout = false
     }
 
-    if (!fullFields) { // if notFullFields not false e.g. true > do not finish &
+    if (!fullFieldsWorkout) { // if notFullFields not false e.g. true > do not finish &
         return;
     } 
 
-    if (fullFields) {
-        containerModal1.style.display = "none"
-    }
+    containerModal1.style.display = "none"
+    
 
 }
 
-function requiredRanges() { // ranges of data to add
 
-}
 
 
 
@@ -236,9 +234,7 @@ document.getElementById('submit-exercise').addEventListener('click', function (e
 
     resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
 
-    requiredFieldsExercise() // pass args to requiredFields func
-
-    containerModal2.style.display = "none"
+    requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) // pass args to requiredFields func
         
 
     console.log(
@@ -250,9 +246,9 @@ document.getElementById('submit-exercise').addEventListener('click', function (e
         )
     })
 
+let fullFieldsExercise = true
 
-
-function resetErrorMessagesExerciseBtn() {
+function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
 
     exerciseNameError.textContent = ""
     setsNumberError.textContent = ""
@@ -262,7 +258,41 @@ function resetErrorMessagesExerciseBtn() {
 
 }
 
-function requiredFieldsExercise() {
+function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError ) {
+
+    let fullFieldsExercise = true
+
+    if (!exerciseName) {
+        exerciseNameError.textContent = "Exercise required"
+        fullFieldsExercise = false
+    }
+
+    if (!setsNumber) {
+        setsNumberError.textContent = "Sets number required"
+        fullFieldsExercise = false
+    }
+
+    if (!repsNumber) {
+        repsNumberError.textContent = "Reps number required"
+        fullFieldsExercise = false
+    }
+
+    if (!restTime) {
+        restTimeError.textContent = "Rest time required"
+        fullFieldsExercise = false
+    }
+
+    if (!rir) {
+        rirError.textContent = "Reps in reserve required"
+        fullFieldsExercise = false
+    }
+
+    if (!fullFieldsExercise) { // if fullFieldsExercise not true > do not finish & exit
+        return;
+    } 
+
+    containerModal2.style.display = "none"
+    
 
 }
 
@@ -273,6 +303,7 @@ function requiredFieldsExercise() {
 
 
 
+ 
 
 
 
