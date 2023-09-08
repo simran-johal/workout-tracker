@@ -144,19 +144,13 @@ document.getElementById("submit-workout").addEventListener('click', function (ev
     let timeError = document.getElementById('time-error')
     let workoutTypeError = document.getElementById('workout-type-error')
 
-    resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError)
-
-    requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) // pass args to requiredFields func    
+    validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
     
     console.log("date", date, "time", time, "workout type", workoutType)
-
-    
 
 })
 
 let fullFieldsWorkout = true
-
-
 
 function resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError) {
 
@@ -182,23 +176,25 @@ function requiredFieldsWorkout(date, time, workoutType, dateError, timeError, wo
     }
 
     if (!workoutType) {
-        workoutTypeError.textContent = "Time is required"
+        workoutTypeError.textContent = "Workout Type is required"
         fullFieldsWorkout = false
     }
 
     if (!fullFieldsWorkout) { // if notFullFields not false e.g. true > do not finish &
         return;
     } 
-
-    containerModal1.style.display = "none"
     
+    return fullFieldsWorkout;
 
 }
 
+function validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) {
+    let fullFieldsExercise = requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
+    if (fullFieldsExercise) {
+        containerModal1.style.display = "none"
+    }
 
-
-
-
+}
 
 
 
@@ -225,18 +221,17 @@ document.getElementById('submit-exercise').addEventListener('click', function (e
     let restTimeError = document.getElementById('rest-time-error')
     let rirError = document.getElementById('reps-in-reserve-error')
 
-    validation(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
+    validationExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
     // calling validation & passing validation all arguments needed
 
-    console.log(
+    /* console.log(
         "exercise name", exerciseName,
         "sets number", setsNumber,
         "reps number", repsNumber,
         "rest time", restTime,
         "rir", rir
-        )
-    })
-
+        ) */
+    }) 
 
 
 function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
@@ -283,7 +278,6 @@ function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, 
         return;
     } 
 
-    console.log("reached end of requiredFieldsExercise", fullFieldsExercise)
     return fullFieldsExercise;
     
     
@@ -300,23 +294,23 @@ function requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir, exe
         rangesValid = false
     }
 
-    if (isNaN(setsNumber)) {
-        setsNumberError.textContent = "Must be a number"
+    if (isNaN(setsNumber) || setsNumber < 1 || setsNumber > 11) {
+        setsNumberError.textContent = "Must be a number between 1-10"
         rangesValid = false
     }
 
-    if (isNaN(repsNumber)) {
-        repsNumberError.textContent = "Must be a number"
+    if (isNaN(repsNumber) || repsNumber < 1 || repsNumber > 50) {
+        repsNumberError.textContent = "Must be a number between 1-50"
         rangesValid = false
     }
 
-    if (isNaN(restTime)) {
-        restTimeError.textContent = "Must be a number"
+    if (isNaN(restTime) || restTime < 0.5 || restTime > 5) {
+        restTimeError.textContent = "Must be a number between 0.5-5"
         rangesValid = false
     }
 
-    if (isNaN(rir)) {
-        rirError.textContent = "Must be a number"
+    if (isNaN(rir) || rir < 1 || restTime > 10) {
+        rirError.textContent = "Must be a number between 1-10"
         rangesValid = false
     }
 
@@ -326,32 +320,20 @@ function requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir, exe
 
     return rangesValid;
 
-    // exercise name > text not numbers
-    // sets number > number range 1-10
-    // reps number > 1-50
-    // rest time > 30s-5min
-    // rir > 1-10
-
 } 
 
-
-
-function validation(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
+function validationExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
     resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
 
     let fullFieldsExercise = requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
-    console.log("full fields exercise:", fullFieldsExercise)
-
-    let rangesValid = requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
-    console.log("ranges valid:", rangesValid)
-
-    // turn into its own function call of passedValidation() so can do more complex outcomes
-    if (fullFieldsExercise && rangesValid) { // input data range flag here too
-        console.log("validation passed")
-        containerModal2.style.display = "none"
-    }
-
     
+    if (fullFieldsExercise) {
+        let rangesValid = requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
+
+        if (rangesValid) {
+            containerModal2.style.display = "none"
+        }
+    }
 }
 
 
@@ -381,6 +363,13 @@ function validation(exerciseName, setsNumber, repsNumber, restTime, rir,exercise
 
 
 // give our arrayMaker functions access to the data to then store in arrays:
+
+
+
+
+
+
+
 
 
 
