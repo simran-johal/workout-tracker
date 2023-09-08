@@ -1,4 +1,33 @@
 
+/* BOILERPLATE STYLING */
+
+
+*:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: 'Baskervville', serif;
+	color: black;
+	background-color: rgb(240, 240, 240);
+}
+
+h1, h2, h3 {
+	font-family: 'Anton', sans-serif;
+}
+
+
+
+
+
+
+/* HEADER MAIN FOOTER NAV STYLING */
 
 header {
     border: solid 1px black;
@@ -16,6 +45,10 @@ nav {
     border: solid 1px green;
 }
 
+
+
+
+
 /* ADD WORKOUT BUTTON MODAL */
 
 .add-workout-modal-container { /* how we position it on the page */
@@ -31,7 +64,6 @@ nav {
     
 }
 
-/* STYLE THE MODAL COMPONENT INPUT FORM HERE */
 .add-workout-modal-content { /* the component window styling */
     background-color: #fefefe;
     margin: 25% auto; /* Centered */
@@ -41,7 +73,6 @@ nav {
     max-width: 600px;
 
 }
-
 
 #cancel1 {
     font-size: 28px;
@@ -53,11 +84,6 @@ nav {
     text-decoration: none;
     cursor: pointer;
 }
-
-
-
-
-
 
 
 /* ADD EXERCISE BUTTON MODAL */
@@ -75,7 +101,6 @@ nav {
     
 }
 
-/* STYLE THE MODAL COMPONENT INPUT FORM HERE */
 .add-exercise-modal-content { /* the component window styling */
     background-color: #fefefe;
     margin: 25% auto; /* Centered */

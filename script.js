@@ -1,208 +1,128 @@
 
-// add workout button modal architecture:
 
-let containerModal1 = document.getElementById("add-workout-modal-container"); // modal component container
-let openModalBtn1 = document.getElementById("open-modal-add-workout-button") // button to open the modal component
-let cancelButton1 = document.getElementById('cancel1')
 
-openModalBtn1.addEventListener('click', function () { // if button clicked modal opens (display = block)
-    containerModal1.style.display = "block";
-})
+function manageWorkoutModal() {
 
-containerModal1.addEventListener('click', function (event) { // 
-    if (event.target == containerModal1) {
-        containerModal1.style.display = "none"
-    } 
+    let containerModal1 = document.getElementById("add-workout-modal-container"); // modal component container
+    let openModalBtn1 = document.getElementById("open-modal-add-workout-button") // button to open the modal component
+    let cancelButton1 = document.getElementById('cancel1')
+
+    openModalBtn1.addEventListener('click', function () { // if button clicked modal opens (display = block)
+        containerModal1.style.display = "block";
+    })
+
+    containerModal1.addEventListener('click', function (event) { // 
+        if (event.target == containerModal1) {
+            containerModal1.style.display = "none"
+        } 
     
-})
+    })
 
-cancelButton1.addEventListener('click', function () { // if X clicked modal removed (display = none)
-    containerModal1.style.display = "none";
-})
+    cancelButton1.addEventListener('click', function () { // if X clicked modal removed (display = none)
+        containerModal1.style.display = "none";
+    })
+
+    // exercise button modal form validation
+
+    document.getElementById("submit-workout").addEventListener('click', function (event) { // ADD WORKOUT MODAL
+
+        event.preventDefault()
+    
+        const addWorkoutForm = document.getElementById('add-workout-form') // retrieving the data
+        const addWorkoutFormData = new FormData(addWorkoutForm)
+
+        let date = addWorkoutFormData.get('date-picker')
+        let time = addWorkoutFormData.get('time-picker')
+        let workoutType = addWorkoutFormData.get('workout-selector')
+
+        let dateError = document.getElementById('date-error')// select error message elements
+        let timeError = document.getElementById('time-error')
+        let workoutTypeError = document.getElementById('workout-type-error')
+
+        validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
+    
+        console.log("date", date, "time", time, "workout type", workoutType)
+
+    })
+
+    let fullFieldsWorkout = true
+
+    function resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError) {
+
+        dateError.textContent = "" 
+        timeError.textContent = ""
+        workoutTypeError.textContent = ""
+
+    }
+
+    function requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) { // pass args to requiredFields func
+
+        fullFieldsWorkout = true
 
 
+        if (!date) {
+            dateError.textContent = "Date is required"
+            fullFieldsWorkout = false
+        }
 
-// add exercise button modal architecture
+        if (!time) {
+            timeError.textContent = "Time is required"
+            fullFieldsWorkout = false
+        }
 
-let containerModal2 = document.getElementById("add-exercise-modal-container"); // modal component container
-let openModalBtn2 = document.getElementById("open-modal-add-exercise-button") // button to open the modal component
-let cancelButton2 = document.getElementById('cancel2')
+        if (!workoutType) {
+            workoutTypeError.textContent = "Workout Type is required"
+            fullFieldsWorkout = false
+        }
 
-openModalBtn2.addEventListener('click', function () { // if button clicked modal opens (display = block)
+        if (!fullFieldsWorkout) { // if notFullFields not false e.g. true > do not finish &
+            return;
+        } 
+    
+        return fullFieldsWorkout;
+
+    }
+
+    function validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) {
+        let fullFieldsExercise = requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
+        if (fullFieldsExercise) {
+            containerModal1.style.display = "none"
+        }
+
+    }
+
+}
+
+manageWorkoutModal();
+
+
+function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
+
+
+    // add exercise button modal architecture
+    let containerModal2 = document.getElementById("add-exercise-modal-container"); // modal component container
+    let openModalBtn2 = document.getElementById("open-modal-add-exercise-button") // button to open the modal component
+    let cancelButton2 = document.getElementById('cancel2')
+
+    openModalBtn2.addEventListener('click', function () { // if button clicked modal opens (display = block)
     containerModal2.style.display = "block";
-})
+    })
 
-containerModal2.addEventListener('click', function (event) { // 
+        containerModal2.addEventListener('click', function (event) { // 
     if (event.target == containerModal2) {
         containerModal2.style.display = "none"
     } 
     
-})
+    })
 
-cancelButton2.addEventListener('click', function () { // if X clicked modal removed (display = none)
+    cancelButton2.addEventListener('click', function () { // if X clicked modal removed (display = none)
     containerModal2.style.display = "none";
-})
+    })
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// constructor functions for workout and exercise objs
-// functions to take user input and store new exercise or workout in own array
-
-const myExerciseList = []
-const myWorkoutList = []
-
-
-function Exercise(name, sets, reps, rir, rest, completed) {
-    Object.assign(this, {name, sets, reps, rir, rest, completed })
-    this.reportWorkout = function () {
-        console.log(
-            "name", name, 
-            "sets", sets,
-            "reps", reps,
-            "RIR", rir,
-            "rest", rest,
-            "completed?", completed,
-        )
-    }
-}
-
-let exerciseOne = new Exercise("Bench", 5, 5, 3, "3 min", Boolean)
-
-
-function Workout(dateAndTime, workoutType) {
-    Object.assign(this, {dateAndTime, workoutType})
-    this.reportExercise = function () {
-        console.log(
-            "date and time", dateAndTime,
-            "workout type", workoutType
-        )
-                
-    }
-}
-
-let workoutOne = new Workout("", "Weights")
-
-
-// function to take user input, make a new obj by using 'new' syntax on constructor then push to array:
-
-function exerciseObjMakerAndArrayStorer(){
-    
-    let something = new Exercise(userInput, ui, ui, ui, ui)
-    myExerciseList.push(something)
-
-}
-
-function workoutObjMakerAndArrayStorer(){
-    
-    let somethingTwo = new Workout(userInput, ui)
-    myWorkoutList.push(somethingTwo)
-
-}
-
-// how do i build functionality to add repeated sets of data?
-
-
-//---------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-// inputting of data and retrieving the data:
-// form validation (data type, required fields, data range, prevent submission):
-
-
-document.getElementById("submit-workout").addEventListener('click', function (event) { // ADD WORKOUT MODAL
-
-    event.preventDefault()
-    
-    const addWorkoutForm = document.getElementById('add-workout-form') // retrieving the data
-    const addWorkoutFormData = new FormData(addWorkoutForm)
-
-    let date = addWorkoutFormData.get('date-picker')
-    let time = addWorkoutFormData.get('time-picker')
-    let workoutType = addWorkoutFormData.get('workout-selector')
-
-    let dateError = document.getElementById('date-error')// select error message elements
-    let timeError = document.getElementById('time-error')
-    let workoutTypeError = document.getElementById('workout-type-error')
-
-    validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
-    
-    console.log("date", date, "time", time, "workout type", workoutType)
-
-})
-
-let fullFieldsWorkout = true
-
-function resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError) {
-
-    dateError.textContent = "" 
-    timeError.textContent = ""
-    workoutTypeError.textContent = ""
-
-}
-
-function requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) { // pass args to requiredFields func
-
-    fullFieldsWorkout = true
-
-
-    if (!date) {
-        dateError.textContent = "Date is required"
-        fullFieldsWorkout = false
-    }
-
-    if (!time) {
-        timeError.textContent = "Time is required"
-        fullFieldsWorkout = false
-    }
-
-    if (!workoutType) {
-        workoutTypeError.textContent = "Workout Type is required"
-        fullFieldsWorkout = false
-    }
-
-    if (!fullFieldsWorkout) { // if notFullFields not false e.g. true > do not finish &
-        return;
-    } 
-    
-    return fullFieldsWorkout;
-
-}
-
-function validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) {
-    let fullFieldsExercise = requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
-    if (fullFieldsExercise) {
-        containerModal1.style.display = "none"
-    }
-
-}
-
-
-
-
-
-
-
-document.getElementById('submit-exercise').addEventListener('click', function (event) { // ADD EXERCISE BUTTON
+    // exercise button modal form validation
+    document.getElementById('submit-exercise').addEventListener('click', function (event) { // ADD EXERCISE BUTTON
 
     event.preventDefault()
         
@@ -233,8 +153,7 @@ document.getElementById('submit-exercise').addEventListener('click', function (e
         ) */
     }) 
 
-
-function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
+    function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
 
     exerciseNameError.textContent = ""
     setsNumberError.textContent = ""
@@ -242,9 +161,9 @@ function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsN
     restTimeError.textContent = ""
     rirError.textContent = ""
 
-}
+    }
 
-function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError ) {
+    function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError ) {
     console.log("requiredFieldsExercise is called here")
 
     let fullFieldsExercise = true
@@ -282,9 +201,9 @@ function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, 
     
     
 
-}
+    }
 
-function requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
+    function requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
 
     let rangesValid = true
 
@@ -320,9 +239,9 @@ function requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir, exe
 
     return rangesValid;
 
-} 
+    } 
 
-function validationExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
+    function validationExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
     resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
 
     let fullFieldsExercise = requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
@@ -334,7 +253,91 @@ function validationExercise(exerciseName, setsNumber, repsNumber, restTime, rir,
             containerModal2.style.display = "none"
         }
     }
+    }
+
 }
+
+manageExerciseModal();
+
+//---------------------------------------------------------------------------------------------------
+
+// TO DO:
+    // PART 1 - ALL LOGIC
+    // CREATE A CONSTRUCTOR FUNCTION THAT TAKES MY INPUTTED DATA AND TURNS IT INTO AN OBJ
+    // ACCESS INPUTTED DATA AND PASS IT TO MY CONSTRUCTOR FUNCTION TO CREATE AN OBJ
+    // PASS THE OBJ TO THE ARRAY STORER FUNCTION TO CREATE AN ARRAY OF THE OBJS
+
+    // PART 2 - UI COMPONENTS BEFORE FINAL JS LOGIC
+    // CREATE 2 DELETE BUTTONS THAT REMOVE THE OBJ IN THE ARRAY - HAVE TO DEFINE INDEX FOR SPECIFIC OBJ
+    // USE DOM TO DISPLAY THE DATA IN A DIV 
+
+//---------------------------------------------------------------------------------------------------
+
+
+
+// constructor functions for workout and exercise objs
+// functions to take user input and store new exercise or workout in own array
+
+const myExerciseList = []
+const myWorkoutList = []
+
+
+function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) {
+    Object.assign(this, {exerciseName, setsNumber, repsNumber, restTime, rir})
+    this.reportWorkout = function () {
+        console.log(
+            "name", exerciseName, 
+            "sets", setsNumber,
+            "reps", repsNumber,
+            "RIR", rir,
+            "rest", restTime,
+        )
+    }
+}
+
+let exerciseOne = new Exercise()
+
+
+function Workout(date, time, workoutType) {
+    Object.assign(this, {date, time, workoutType})
+    this.reportExercise = function () {
+        console.log(
+            "date", date,
+            "time", time,
+            "workout type", workoutType
+        )
+                
+    }
+}
+
+let workoutOne = new Workout("", "Weights")
+
+
+
+
+// function to take user input, make a new obj by using 'new' syntax on constructor then push to array:
+
+function exerciseObjMakerAndArrayStorer(){
+    
+    let something = new Exercise(userInput, ui, ui, ui, ui)
+    myExerciseList.push(something)
+
+}
+
+function workoutObjMakerAndArrayStorer(){
+    
+    let somethingTwo = new Workout(userInput, ui)
+    myWorkoutList.push(somethingTwo)
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -359,24 +362,6 @@ function validationExercise(exerciseName, setsNumber, repsNumber, restTime, rir,
 
 
 
-
-
-
-// give our arrayMaker functions access to the data to then store in arrays:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// questions
+    // how do i build functionality to add repeated sets of data?
+    // give our arrayMaker functions access to the data to then store in arrays:
