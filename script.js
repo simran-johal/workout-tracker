@@ -125,23 +125,11 @@ function workoutObjMakerAndArrayStorer(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // inputting of data and retrieving the data:
 // form validation (data type, required fields, data range, prevent submission):
 
 
-document.getElementById("submit-workout").addEventListener('click', function (event) {
+document.getElementById("submit-workout").addEventListener('click', function (event) { // ADD WORKOUT MODAL
 
     event.preventDefault()
     
@@ -212,30 +200,33 @@ function requiredFieldsWorkout(date, time, workoutType, dateError, timeError, wo
 
 
 
-document.getElementById('submit-exercise').addEventListener('click', function (event) {
+
+
+
+
+
+
+document.getElementById('submit-exercise').addEventListener('click', function (event) { // ADD EXERCISE BUTTON
 
     event.preventDefault()
         
     const addExerciseForm = document.getElementById('add-exercise-form') // retrieving the data
     const addExerciseFormData = new FormData(addExerciseForm)
 
-    let exerciseName = addExerciseFormData.get('textbox-for-exercise') // the individual properties
+    let exerciseName = addExerciseFormData.get('textbox-for-exercise') // selecting and assigning properties to variables
     let setsNumber = addExerciseFormData.get('textbox-for-sets')
     let repsNumber =addExerciseFormData.get('textbox-for-reps')
     let restTime = addExerciseFormData.get('textbox-for-rest')
     let rir = addExerciseFormData.get('textbox-for-rir')
 
-    let exerciseNameError = document.getElementById('exercise-name-error') // selecting & assigning the divs to display error messages
+    let exerciseNameError = document.getElementById('exercise-name-error') // selecting & assigning error divs to variables
     let setsNumberError = document.getElementById('number-of-set-error')
-    let repsNumberError = document.getElementById('nuumber-of-reps-error')
+    let repsNumberError = document.getElementById('number-of-reps-error')
     let restTimeError = document.getElementById('rest-time-error')
     let rirError = document.getElementById('reps-in-reserve-error')
 
-
-    resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
-
-    requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) // pass args to requiredFields func
-        
+    validation(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
+    // calling validation & passing validation all arguments needed
 
     console.log(
         "exercise name", exerciseName,
@@ -246,7 +237,7 @@ document.getElementById('submit-exercise').addEventListener('click', function (e
         )
     })
 
-let fullFieldsExercise = true
+
 
 function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
 
@@ -258,7 +249,8 @@ function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsN
 
 }
 
-function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError ) {
+function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError ) {
+    console.log("requiredFieldsExercise is called here")
 
     let fullFieldsExercise = true
 
@@ -291,15 +283,76 @@ function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, 
         return;
     } 
 
-    containerModal2.style.display = "none"
+    console.log("reached end of requiredFieldsExercise", fullFieldsExercise)
+    return fullFieldsExercise;
+    
     
 
 }
 
+function requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
+
+    let rangesValid = true
+
+
+    if (!/^[a-zA-Z]+$/.test(exerciseName)) {
+        exerciseNameError.textContent = "Must be a word"
+        rangesValid = false
+    }
+
+    if (isNaN(setsNumber)) {
+        setsNumberError.textContent = "Must be a number"
+        rangesValid = false
+    }
+
+    if (isNaN(repsNumber)) {
+        repsNumberError.textContent = "Must be a number"
+        rangesValid = false
+    }
+
+    if (isNaN(restTime)) {
+        restTimeError.textContent = "Must be a number"
+        rangesValid = false
+    }
+
+    if (isNaN(rir)) {
+        rirError.textContent = "Must be a number"
+        rangesValid = false
+    }
+
+    if (!rangesValid) { // if fullFieldsExercise not true > do not finish & exit
+        return;
+    } 
+
+    return rangesValid;
+
+    // exercise name > text not numbers
+    // sets number > number range 1-10
+    // reps number > 1-50
+    // rest time > 30s-5min
+    // rir > 1-10
+
+} 
 
 
 
+function validation(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
+    resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
 
+    let fullFieldsExercise = requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
+    console.log("full fields exercise:", fullFieldsExercise)
+
+    let rangesValid = requiredRanges(exerciseName, setsNumber, repsNumber, restTime, rir,exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
+    console.log("ranges valid:", rangesValid)
+
+    // turn into its own function call of passedValidation() so can do more complex outcomes
+    if (fullFieldsExercise && rangesValid) { // input data range flag here too
+        console.log("validation passed")
+        containerModal2.style.display = "none"
+    }
+
+    
+}
 
 
 
