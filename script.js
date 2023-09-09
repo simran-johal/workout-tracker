@@ -41,7 +41,7 @@ function manageWorkoutModal() {
 
         validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
     
-        console.log("date", date, "time", time, "workout type", workoutType)
+        
 
     })
 
@@ -84,6 +84,8 @@ function manageWorkoutModal() {
     }
 
     function validationWorkout(date, time, workoutType, dateError, timeError, workoutTypeError) {
+        resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError)
+
         let fullFieldsExercise = requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
         if (fullFieldsExercise) {
             containerModal1.style.display = "none"
@@ -92,7 +94,6 @@ function manageWorkoutModal() {
     }
 
 }
-
 manageWorkoutModal();
 
 
@@ -105,18 +106,18 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
     let cancelButton2 = document.getElementById('cancel2')
 
     openModalBtn2.addEventListener('click', function () { // if button clicked modal opens (display = block)
-    containerModal2.style.display = "block";
+        containerModal2.style.display = "block";
     })
 
-        containerModal2.addEventListener('click', function (event) { // 
-    if (event.target == containerModal2) {
+    containerModal2.addEventListener('click', function (event) { // 
+        if (event.target == containerModal2) {
         containerModal2.style.display = "none"
     } 
     
     })
 
     cancelButton2.addEventListener('click', function () { // if X clicked modal removed (display = none)
-    containerModal2.style.display = "none";
+        containerModal2.style.display = "none";
     })
 
 
@@ -164,7 +165,7 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
     }
 
     function requiredFieldsExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError ) {
-    console.log("requiredFieldsExercise is called here")
+    
 
     let fullFieldsExercise = true
 
@@ -251,85 +252,96 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
 
         if (rangesValid) {
             containerModal2.style.display = "none"
+            createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir)
         }
     }
     }
 
 }
-
 manageExerciseModal();
-
-//---------------------------------------------------------------------------------------------------
-
-// TO DO:
-    // PART 1 - ALL LOGIC
-    // CREATE A CONSTRUCTOR FUNCTION THAT TAKES MY INPUTTED DATA AND TURNS IT INTO AN OBJ
-    // ACCESS INPUTTED DATA AND PASS IT TO MY CONSTRUCTOR FUNCTION TO CREATE AN OBJ
-    // PASS THE OBJ TO THE ARRAY STORER FUNCTION TO CREATE AN ARRAY OF THE OBJS
-
-    // PART 2 - UI COMPONENTS BEFORE FINAL JS LOGIC
-    // CREATE 2 DELETE BUTTONS THAT REMOVE THE OBJ IN THE ARRAY - HAVE TO DEFINE INDEX FOR SPECIFIC OBJ
-    // USE DOM TO DISPLAY THE DATA IN A DIV 
-
-//---------------------------------------------------------------------------------------------------
 
 
 
 // constructor functions for workout and exercise objs
 // functions to take user input and store new exercise or workout in own array
 
-const myExerciseList = []
 const myWorkoutList = []
+const myExerciseList = []
 
-
-function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) {
-    Object.assign(this, {exerciseName, setsNumber, repsNumber, restTime, rir})
-    this.reportWorkout = function () {
-        console.log(
-            "name", exerciseName, 
-            "sets", setsNumber,
-            "reps", repsNumber,
-            "RIR", rir,
-            "rest", restTime,
-        )
-    }
-}
-
-let exerciseOne = new Exercise()
-
-
-function Workout(date, time, workoutType) {
+function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORING IN ARRAY
     Object.assign(this, {date, time, workoutType})
-    this.reportExercise = function () {
+}
+
+
+Workout.prototype.reportExercise = function () {
+    console.log(
+        "date", this.date,
+        "time", this.time,
+        "workout type", this.workoutType
+        )            
+}
+
+function createWorkoutObj(date, time, workoutType) {
+
+    let currentWorkoutStorer = new Workout(date, time,workoutType)
+    myWorkoutList.push(currentWorkoutStorer)
+
+    console.log(
+        "new instance workout obj:", currentWorkoutStorer,
+        myWorkoutList[0],
+        myWorkoutList[1],
+        myWorkoutList[2],
+        myWorkoutList[3],
+        myWorkoutList[4],
+        myWorkoutList[5],
+        "my full array", myWorkoutList)
+
+}
+
+
+function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) { // EXERCISE OBJECT BUILDER AND STORING IN ARRAY
+    Object.assign(this, {exerciseName, setsNumber, repsNumber, restTime, rir})
+    
+}
+
+Exercise.prototype.reportExercise = function () {
         console.log(
-            "date", date,
-            "time", time,
-            "workout type", workoutType
+            "name", this.exerciseName, 
+            "sets", this.setsNumber,
+            "reps", this.repsNumber,
+            "RIR", this.rir,
+            "rest", this.restTime,
         )
-                
-    }
 }
 
-let workoutOne = new Workout("", "Weights")
 
-
-
-
-// function to take user input, make a new obj by using 'new' syntax on constructor then push to array:
-
-function exerciseObjMakerAndArrayStorer(){
+function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) {
     
-    let something = new Exercise(userInput, ui, ui, ui, ui)
-    myExerciseList.push(something)
+    let currentExerciseStorer = new Exercise(exerciseName, setsNumber, repsNumber, restTime, rir)
+    myExerciseList.push(currentExerciseStorer)
 
-}
 
-function workoutObjMakerAndArrayStorer(){
+    console.log(
+        "new instance exercise obj:", currentExerciseStorer,
+        myExerciseList[0],
+        myExerciseList[1],
+        myExerciseList[2],
+        myExerciseList[3],
+        myExerciseList[4],
+        myExerciseList[5],
+        "my full array", myExerciseList)
     
-    let somethingTwo = new Workout(userInput, ui)
-    myWorkoutList.push(somethingTwo)
-
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
