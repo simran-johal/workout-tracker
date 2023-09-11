@@ -45,7 +45,7 @@ header {
 }
 
 main {
-    border: solid 1px red;
+   /* border: solid 1px red; */
     height: calc(100vh - 150px);
     width: 100vw;
     display: flex;
@@ -57,7 +57,7 @@ main {
 
 
 #add-workout-section {
-    border: solid 1px lightgreen;
+   /*  border: solid 1px lightgreen; */
     background-color: lightgrey;
     width: 20%;
     display: flex;
@@ -71,7 +71,7 @@ main {
 
 #add-exercise-section {
     background-color: white;
-    border: solid 1px yellow;
+    /* border: solid 1px yellow; */
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -81,7 +81,7 @@ main {
 
 
 footer {
-    border: solid 1px blue;
+   /* border: solid 1px blue; */
     background-color: rgb(42,42,42);
     height: 50px;
     color: white;
@@ -100,9 +100,7 @@ footer {
 
 
 
-.border {
-    border: solid 1px purple;
-}
+
 
 
 
@@ -127,7 +125,6 @@ footer {
 .add-workout-modal-content { 
     background-color: #fefefe;
     margin: 300px auto;
-    border: 1px solid black;
     width: 400px;
     max-width: 600px;
     height: 500px;
@@ -136,6 +133,7 @@ footer {
     justify-content: center;
     align-items: center;
     position: relative;
+    border-radius: 5%;
 
 }
 
@@ -147,7 +145,7 @@ footer {
     right: 25px;
     border-radius: 50%;
     padding: 5px 15px;
-    border: solid 1px black
+    border: solid 1px black 
     
     
 }
@@ -159,32 +157,64 @@ footer {
 }
 
 #your-workout-header {
-    margin-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 #add-workout-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    width: 80%;
+    
     /* border: solid 3px purple; */
     
 }
 
-/* #add-workout-form-items {
-    margin: ;
+.form-input-sections {
+    margin: 15px;
+}
+
+
+.form-input-sections-label-input-1 {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-} */
+    align-items: left;
+    flex-direction: column;
+    gap: 10px;
+    
+    
+}
+
+.form-input-sections-label-input-2 {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    gap: 10px;
+    
+    
+}
+
+.form-input-sections-label-input-3 {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    gap: 10px;
+    
+    
+}
+
+.error-message {
+    margin: 0;
+    padding: 0;
+}
 
 
 
-
-
-
-
+.border {
+    border: solid 1px purple;
+}
 
 
 
@@ -202,10 +232,10 @@ footer {
 
 /* ADD EXERCISE BUTTON MODAL */
 
-.add-exercise-modal-container { /* how we position it on the page */
-    display: none; /* Hidden by default */
-    z-index: 1; /* Sit on top */
-    position: fixed; /* Stay in place */
+.add-exercise-modal-container { 
+    display: none; 
+    z-index: 1; 
+    position: fixed; 
     height: 100%;
     width: 100%;
     top: 0;
@@ -215,13 +245,18 @@ footer {
     
 }
 
-.add-exercise-modal-content { /* the component window styling */
+.add-exercise-modal-content { 
     background-color: #fefefe;
-    margin: 25% auto; /* Centered */
+    margin: 300px auto; 
     padding: 5%;
     border: 1px solid black;
-    width: 50%;
+    width: 400px;
     max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
 }
 
@@ -240,6 +275,30 @@ footer {
 .error-message {
     color: red;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -266,3 +325,6 @@ footer {
 
 
 */
+
+
+

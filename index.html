@@ -35,28 +35,35 @@
           <div class="add-workout-modal-content borders">
   
             <div id="cancel1" class="borders">&times;</div> 
-            <h2 id="your-workout-header"class="borders">Your Workout:</h2>
+            <h2 id="your-workout-header"class="borders">Add a Workout</h2>
       
     
-            <form id="add-workout-form" >
-  
-              <label for="date-picking" class="borders add-workout-form-items">Date:</label>
-              <input type="date" id="date-picking" name="date-picker" class="borders add-workout-form-items">
-              <div id="date-error" class="error-message add-workout-form-items"></div>
-  
-              <label for="time-picking" class="borders add-workout-form-items">Time:</label>
-              <input type="time" id="time-picking" name="time-picker" class="borders add-workout-form-items">
-              <div id="time-error" class="error-message add-workout-form-items"></div>
-  
-              <label for="workout-type" class="borders add-workout-form-items">Workout Type</label>
-              <select id="workout-type" name="workout-selector" class="borders add-workout-form-items" >
+            <form id="add-workout-form">
+
+              <div class="form-input-sections borders form-input-sections-label-input-1">
+                <label for="date-picking" class="borders ">Date:</label>
+                <input type="date" id="date-picking" name="date-picker" class="borders ">
+                <div id="date-error" class="error-message borders "></div>
+              </div>
+              
+              <div class="form-input-sections borders form-input-sections-label-input-2"> 
+                <label for="time-picking" class="borders ">Time:</label>
+                <input type="time" id="time-picking" name="time-picker" class="borders ">
+                <div id="time-error" class="error-message borders "></div>
+              </div>
+              
+              <div class="form-input-sections borders form-input-sections-label-input-3">
+                <label for="workout-type" class="borders ">Workout Type</label>
+                <select id="workout-type" name="workout-selector" class="borders " >
                   <option value="" disabled selected>Select a Workout Type</option></option>
                   <option value="weight-training">Weight Training</option>
                   <option value="circuit-training">Circuit Training</option>
-              </select>
-              <div id="workout-type-error" class="error-message add-workout-form-items"></div>
+                </select>
+                <div id="workout-type-error" class="error-message borders "></div>
+              </div>
               
-              <button type="submit" id="submit-workout" class="borders add-workout-form-items">Add</button>
+              
+              <button type="submit" id="submit-workout" class="borders form-input-sections">Add</button>
               
             </form>  
   
@@ -78,9 +85,7 @@
 
 
           <div id="cancel2">&times;</div>
-          <h2>Input Data</h2>
-          <p>input your data below</p>
-
+          <h2>Add a Workout</h2>
     
           <form id="add-exercise-form">
 
