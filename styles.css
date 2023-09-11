@@ -10,40 +10,100 @@
 
 html {
 	font-size: 100%;
+    
 }
 
 body {
 	font-family: 'Baskervville', serif;
 	color: black;
 	background-color: rgb(240, 240, 240);
+    margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 h1, h2, h3 {
 	font-family: 'Anton', sans-serif;
 }
 
-
-
-
+h1 {
+    padding: 50px;
+}
 
 
 /* HEADER MAIN FOOTER NAV STYLING */
 
 header {
     border: solid 1px black;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: rgb(42,42,42);
+    color: white;
+    height: 100px;
+    width: 100vw;;
 }
 
 main {
     border: solid 1px red;
+    height: calc(100vh - 150px);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    
+    
+
 }
+
+
+#add-workout-section {
+    border: solid 1px lightgreen;
+    background-color: lightgrey;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    
+
+}
+
+
+#add-exercise-section {
+    background-color: white;
+    border: solid 1px yellow;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
 
 footer {
     border: solid 1px blue;
+    background-color: rgb(42,42,42);
+    height: 50px;
+    color: white;
+    display: flex;
+    justify-content: center; 
+    width: 100vw;
+}
+   
+
+
+
+
+
+
+
+
+
+
+.border {
+    border: solid 1px purple;
 }
 
-nav {
-    border: solid 1px green;
-}
 
 
 
@@ -51,32 +111,45 @@ nav {
 
 /* ADD WORKOUT BUTTON MODAL */
 
-.add-workout-modal-container { /* how we position it on the page */
-    display: none; /* Hidden by default */
-    z-index: 1; /* Sit on top */
-    position: fixed; /* Stay in place */
+.add-workout-modal-container { 
+    display: none; 
+    z-index: 1; 
+    position: fixed; 
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.4); 
-    /* Overlay background */
+    
     
 }
 
-.add-workout-modal-content { /* the component window styling */
+.add-workout-modal-content { 
     background-color: #fefefe;
-    margin: 25% auto; /* Centered */
-    padding: 5%;
+    margin: 300px auto;
     border: 1px solid black;
-    width: 50%;
+    width: 400px;
     max-width: 600px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
 }
 
 #cancel1 {
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    border-radius: 50%;
+    padding: 5px 15px;
+    border: solid 1px black
+    
+    
 }
 
 #cancel1:hover {
@@ -84,6 +157,47 @@ nav {
     text-decoration: none;
     cursor: pointer;
 }
+
+#your-workout-header {
+    margin-bottom: 100px;
+}
+
+#add-workout-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    /* border: solid 3px purple; */
+    
+}
+
+/* #add-workout-form-items {
+    margin: ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ADD EXERCISE BUTTON MODAL */
@@ -129,3 +243,26 @@ nav {
 
 
 
+/* 
+    PART 1 - INITIAL UI
+    // BASIC UI DESIGN PROCESS SO IT RESEMBLES MY WIREFRAME
+    // LHS NAV WITH THE ADD WORKOUT BUTTON AND RESULTS
+    // RHS INNER WINDOW TO DISPLAY EXERCISES BUTTON AND RESULTS 
+*/
+
+
+
+
+
+
+
+
+
+/* 
+
+// LOGIC TO BE BUILT
+    // WHEN CLICKING ADD BUTTON AND CLICKING OUT, ERROR MESSAGES TO BE RESET
+
+
+
+*/

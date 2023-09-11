@@ -1,8 +1,9 @@
 
 
 
-function manageWorkoutModal() {
+function manageWorkoutModal() { // ADD WORKOUT MODAL ARCHITECTURE
 
+    // modal architecture
     let containerModal1 = document.getElementById("add-workout-modal-container"); // modal component container
     let openModalBtn1 = document.getElementById("open-modal-add-workout-button") // button to open the modal component
     let cancelButton1 = document.getElementById('cancel1')
@@ -11,9 +12,13 @@ function manageWorkoutModal() {
         containerModal1.style.display = "block";
     })
 
-    containerModal1.addEventListener('click', function (event) { // 
+    containerModal1.addEventListener('click', function (event) { // if outside input box clicked (display = none)
         if (event.target == containerModal1) {
             containerModal1.style.display = "none"
+            
+            console.log(resetErrorMessagesWorkoutBtn(dateError, timeError, workoutTypeError))
+            
+            
         } 
     
     })
@@ -22,8 +27,8 @@ function manageWorkoutModal() {
         containerModal1.style.display = "none";
     })
 
-    // exercise button modal form validation
-
+    
+    // validation
     document.getElementById("submit-workout").addEventListener('click', function (event) { // ADD WORKOUT MODAL
 
         event.preventDefault()
@@ -89,6 +94,7 @@ function manageWorkoutModal() {
         let fullFieldsExercise = requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
         if (fullFieldsExercise) {
             containerModal1.style.display = "none"
+
         }
 
     }
@@ -100,7 +106,7 @@ manageWorkoutModal();
 function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
 
 
-    // add exercise button modal architecture
+    // modal architecture
     let containerModal2 = document.getElementById("add-exercise-modal-container"); // modal component container
     let openModalBtn2 = document.getElementById("open-modal-add-exercise-button") // button to open the modal component
     let cancelButton2 = document.getElementById('cancel2')
@@ -122,7 +128,7 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
 
 
 
-    // exercise button modal form validation
+    // validation
     document.getElementById('submit-exercise').addEventListener('click', function (event) { // ADD EXERCISE BUTTON
 
     event.preventDefault()
@@ -262,8 +268,7 @@ manageExerciseModal();
 
 
 
-// constructor functions for workout and exercise objs
-// functions to take user input and store new exercise or workout in own array
+// constructor functions to create objs, funcs to store them into arrays
 
 const myWorkoutList = []
 const myExerciseList = []
@@ -272,8 +277,7 @@ function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORIN
     Object.assign(this, {date, time, workoutType})
 }
 
-
-Workout.prototype.reportExercise = function () {
+Workout.prototype.reportWorkout = function () {
     console.log(
         "date", this.date,
         "time", this.time,
@@ -283,7 +287,7 @@ Workout.prototype.reportExercise = function () {
 
 function createWorkoutObj(date, time, workoutType) {
 
-    let currentWorkoutStorer = new Workout(date, time,workoutType)
+    let currentWorkoutStorer = new Workout(date, time, workoutType)
     myWorkoutList.push(currentWorkoutStorer)
 
     console.log(
@@ -337,6 +341,9 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
+// PART 2 - UI COMPONENTS OF FINAL JS LOGIC
+    // REFERENCE THE OBJ VIA ARRAY[INDEX] AND ASSIGN THE CONTENTS TO A DIV USING .TEXTCONTENTS
+    // ADD A DELETE BUTTON TO THAT DIV DYNAMICALLY USING CURRENTDIV.ADDELEM AND REF IT TO REMOVE ARR ELEM USING A METHOD
 
 
 
@@ -351,29 +358,3 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// questions
-    // how do i build functionality to add repeated sets of data?
-    // give our arrayMaker functions access to the data to then store in arrays:

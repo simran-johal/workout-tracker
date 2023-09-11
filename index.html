@@ -25,57 +25,55 @@
 		<main>
 
       
-
-      <nav>
+      <!-- MAJOR MAIN COMPONENT 1 -->
+      <div id="add-workout-section">
         <h3>Workouts</h3>
         <button id="open-modal-add-workout-button">Add Workout</button>
-      </nav>
+        
+        <div id="add-workout-modal-container" class="add-workout-modal-container">
 
-      
-      <!-- ADD WORKOUT MODAL UNIT -->
-      <div id="add-workout-modal-container" class="add-workout-modal-container">
-
-        <div class="add-workout-modal-content">
-
-          <div id="cancel1">&times;</div> 
-          <h2>Input Data</h2>
-          <p>input your data below</p>
+          <div class="add-workout-modal-content borders">
   
-          <form id="add-workout-form">
-
-            <label for="date-picking">Date:</label>
-            <input type="date" id="date-picking" name="date-picker">
-            <div id="date-error" class="error-message"></div></div>
-
-            <label for="time-picking">Time:</label>
-            <input type="time" id="time-picking" name="time-picker">
-            <div id="time-error" class="error-message"></div>
-
-            <label for="workout-type">Workout Type</label>
-            <select id="workout-type" name="workout-selector" >
-                <option value="" disabled selected>Select a Workout Type</option>></option>
-                <option value="weight-training">Weight Training</option>
-                <option value="circuit-training">Circuit Training</option>
-            </select>
-            <div id="workout-type-error" class="error-message"></div>
-            
-            <button type="submit" id="submit-workout">Add</button>
-            
-          </form>  
-
+            <div id="cancel1" class="borders">&times;</div> 
+            <h2 id="your-workout-header"class="borders">Your Workout:</h2>
+      
+    
+            <form id="add-workout-form" >
+  
+              <label for="date-picking" class="borders add-workout-form-items">Date:</label>
+              <input type="date" id="date-picking" name="date-picker" class="borders add-workout-form-items">
+              <div id="date-error" class="error-message add-workout-form-items"></div>
+  
+              <label for="time-picking" class="borders add-workout-form-items">Time:</label>
+              <input type="time" id="time-picking" name="time-picker" class="borders add-workout-form-items">
+              <div id="time-error" class="error-message add-workout-form-items"></div>
+  
+              <label for="workout-type" class="borders add-workout-form-items">Workout Type</label>
+              <select id="workout-type" name="workout-selector" class="borders add-workout-form-items" >
+                  <option value="" disabled selected>Select a Workout Type</option></option>
+                  <option value="weight-training">Weight Training</option>
+                  <option value="circuit-training">Circuit Training</option>
+              </select>
+              <div id="workout-type-error" class="error-message add-workout-form-items"></div>
+              
+              <button type="submit" id="submit-workout" class="borders add-workout-form-items">Add</button>
+              
+            </form>  
+  
+          </div>
+  
         </div>
-
+      
       </div>
 
-
-
-
-
-
-
-      <button id="open-modal-add-exercise-button">Add Exercise</button>
       
-      <div id="add-exercise-modal-container" class="add-exercise-modal-container">
+      <!-- MAJOR MAIN COMPONENT 2 -->
+      
+      <div id="add-exercise-section">
+        <h3>Exercises</h3>
+        <button id="open-modal-add-exercise-button">Add Exercise</button>
+      
+        <div id="add-exercise-modal-container" class="add-exercise-modal-container">
         <div class="add-exercise-modal-content">
 
 
@@ -116,6 +114,10 @@
         
         </div>
       </div>
+
+
+      </div>
+      
 
 
 
