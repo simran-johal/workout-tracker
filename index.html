@@ -40,19 +40,19 @@
     
             <form id="add-workout-form">
 
-              <div class="form-input-sections borders form-input-sections-label-input-1">
+              <div class="form-input-sections-workout borders workout-form-input-sections-label ">
                 <label for="date-picking" class="borders ">Date:</label>
                 <input type="date" id="date-picking" name="date-picker" class="borders ">
                 <div id="date-error" class="error-message borders "></div>
               </div>
               
-              <div class="form-input-sections borders form-input-sections-label-input-2"> 
+              <div class="form-input-sections-workout borders workout-form-input-sections-label "> 
                 <label for="time-picking" class="borders ">Time:</label>
                 <input type="time" id="time-picking" name="time-picker" class="borders ">
                 <div id="time-error" class="error-message borders "></div>
               </div>
               
-              <div class="form-input-sections borders form-input-sections-label-input-3">
+              <div class="form-input-sections-workout borders workout-form-input-sections-label ">
                 <label for="workout-type" class="borders ">Workout Type</label>
                 <select id="workout-type" name="workout-selector" class="borders " >
                   <option value="" disabled selected>Select a Workout Type</option></option>
@@ -63,7 +63,7 @@
               </div>
               
               
-              <button type="submit" id="submit-workout" class="borders form-input-sections">Add</button>
+              <button type="submit" id="submit-workout" class="borders form-input-sections form-input-sections-workout">Add</button>
               
             </form>  
   
@@ -85,33 +85,60 @@
 
 
           <div id="cancel2">&times;</div>
-          <h2>Add a Workout</h2>
+          <h2 id="your-exercise-header">Add an Exercise</h2>
     
           <form id="add-exercise-form">
 
-            <label for="exercise-name">Exercise:</label>
-            <textarea id="exercise-name" name="textbox-for-exercise" rows="1" cols="35"></textarea>
-            <div id="exercise-name-error" class="error-message"></div>
 
-            <label for="number-of-sets">Sets (0-10):</label>
-            <textarea id="number-of-sets" name="textbox-for-sets" rows="1" cols="35"></textarea>
-            <div id="number-of-set-error" class="error-message"></div>
 
-            <label for="number-of-reps">Reps (0-50):</label>
-            <textarea id="number-of-reps" name="textbox-for-reps" rows="1" cols="35"></textarea>
-            <div id="number-of-reps-error" class="error-message"></div>
+            <div class="form-input-sections-exercise exercise-form-input-sections-label">
+              <label for="exercise-name">Exercise:</label>
+              <textarea id="exercise-name" name="textbox-for-exercise" rows="1" cols="35"></textarea>
+              <div id="exercise-name-error" class="error-message"></div>
+            </div>
 
-            <label for="rest-time">Rest Time (mins):</label>
-            <textarea id="rest-time" name="textbox-for-rest" rows="1" cols="35"></textarea>
-            <div id="rest-time-error" class="error-message"></div>
+            <div class="form-input-sections-exercise exercise-form-input-sections-label">
+              <label for="number-of-sets">Sets (0-10):</label>
+              <textarea id="number-of-sets" name="textbox-for-sets" rows="1" cols="35"></textarea>
+              <div id="number-of-set-error" class="error-message"></div>
+            </div>
 
-            <label for="rir">Reps in reserve (1-10):</label>
+            <div class="form-input-sections-exercise exercise-form-input-sections-label">
+              <label for="number-of-reps">Reps (0-50):</label>
+              <textarea id="number-of-reps" name="textbox-for-reps" rows="1" cols="35"></textarea>
+              <div id="number-of-reps-error" class="error-message"></div>
+            </div>
+
+            <div class="form-input-sections-exercise exercise-form-input-sections-label">
+              <label for="rest-time">Rest Time (mins):</label>
+              <textarea id="rest-time" name="textbox-for-rest" rows="1" cols="35"></textarea>
+              <div id="rest-time-error" class="error-message"></div>
+            </div>
+
+            <div class="form-input-sections-exercise exercise-form-input-sections-label">
+              <label for="rir">Reps in reserve (1-10):</label>
             <textarea id="reps-in-reserve" name="textbox-for-rir" rows="1" cols="35"></textarea>
             <div id="reps-in-reserve-error" class="error-message"></div>
+            </div>
+
+            <div class="form-input-sections-exercise">
+              <button type="submit" id="submit-exercise">Add</button>
+            </div>
+            
+
+            
+
+           
+
+            
+
+            
+
+            
 
 
 
-            <button type="submit" id="submit-exercise">Add</button>
+            
 
           </form>
         

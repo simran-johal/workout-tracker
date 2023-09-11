@@ -170,12 +170,12 @@ footer {
     
 }
 
-.form-input-sections {
+.form-input-sections-workout {
     margin: 15px;
 }
 
 
-.form-input-sections-label-input-1 {
+.workout-form-input-sections-label {
     display: flex;
     justify-content: center;
     align-items: left;
@@ -185,25 +185,7 @@ footer {
     
 }
 
-.form-input-sections-label-input-2 {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    flex-direction: column;
-    gap: 10px;
-    
-    
-}
 
-.form-input-sections-label-input-3 {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    flex-direction: column;
-    gap: 10px;
-    
-    
-}
 
 .error-message {
     margin: 0;
@@ -247,16 +229,16 @@ footer {
 
 .add-exercise-modal-content { 
     background-color: #fefefe;
-    margin: 300px auto; 
-    padding: 5%;
-    border: 1px solid black;
+    margin: 300px auto;
     width: 400px;
     max-width: 600px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    border-radius: 5%;
 
 }
 
@@ -264,6 +246,12 @@ footer {
 #cancel2 {
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    border-radius: 50%;
+    padding: 5px 15px;
+    border: solid 1px black
 }
 
 #cancel2:hover {
@@ -277,12 +265,37 @@ footer {
 }
 
 
+#your-exercise-header {
+    margin-bottom: 20px;
+}
+
+
+#add-exercise-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    
+    /* border: solid 3px purple; */
+    
+}
 
 
 
+.form-input-sections-exercise {
+    margin: 15px;
+}
 
 
-
+.exercise-form-input-sections-label {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    gap: 10px;
+    
+    
+}
 
 
 
