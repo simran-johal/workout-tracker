@@ -96,7 +96,9 @@ function manageWorkoutModal() { // ADD WORKOUT MODAL ARCHITECTURE
 
             containerModal1.style.display = "none"
 
-            createWorkoutObj(date, time, workoutType)
+            createWorkoutObj(date, time, workoutType) // on submit run func that creates it into an obj & stores it
+
+            displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
         }
 
     }
@@ -259,7 +261,7 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
 
         if (rangesValid) {
             containerModal2.style.display = "none"
-            
+
             createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir)
         }
     }
@@ -276,7 +278,6 @@ const myWorkoutList = []
 const myExerciseList = []
 
 function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORING IN ARRAY
-    console.log("inside constructor", date, time, workoutType)
     Object.assign(this, {date, time, workoutType})
     
 }
@@ -301,36 +302,9 @@ function createWorkoutObj(date, time, workoutType) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) { // EXERCISE OBJECT BUILDER AND STORING IN ARRAY
     Object.assign(this, {exerciseName, setsNumber, repsNumber, restTime, rir})
     
-}
-
-Exercise.prototype.reportExercise = function () {
-        console.log(
-            "name", this.exerciseName, 
-            "sets", this.setsNumber,
-            "reps", this.repsNumber,
-            "RIR", this.rir,
-            "rest", this.restTime,
-        )
 }
 
 
@@ -353,54 +327,43 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 }
 
 
-
-
-
-
-
-// FUNC THAT CREATES THE ADDED WORKOUT DOM ELEMENT TO BE ADDED TO THE DOM U
-
-/* let displayWorkoutsDiv = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
-
-function createDomWorkoutElement(workoutObjs) {
-
-    let objDate = workoutObjs.date
-    let objTime = workoutObjs.time
-    let objWorkoutType = workoutObjs.time
-
-    console.log(
-        workoutObjs.date,
-        workoutObjs.time,
-        workoutObjs.time
-    )
-
-    let displayWorkoutItems = displayWorkoutsDiv.createElement('div') 
-
-    displayWorkoutItems.className = 'workout-items'
-    displayWorkoutItems.innerHtml = `<h1>${objDate}</h1>` // date variable goes in here
-    displayWorkoutItems.innerHtml = `<p>${objWorkoutType}</p>` // workout type variable goes in here
-
-
-}
-
-
-
-
-
-
 // FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM
 
+let displayWorkoutsDiv = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
+
 function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALLING FUNC THAT WILL DISPLAY
+    myWorkoutList.forEach((listItem) => {
 
+        // wipe the dom here
+        displayWorkoutsDiv.innerHTML = '';
+        
 
-    myWorkoutList.forEach(workoutObjs => {
+        let displayWorkoutItems = document.createElement('div')
+        displayWorkoutItems.className = 'workout-items'
 
-        createDomWorkoutElement(workoutObjs)
+        displayWorkoutItems.innerHTML = `<p>${listItem.date}</p>` // date variable goes in here
+        displayWorkoutItems.innerHTML += `<p>${listItem.workoutType}</p>` // workout type variable goes in here
+        
+        displayWorkoutsDiv.appendChild(displayWorkoutItems)
 
         
-    });
+    }); 
 
-} */
+} 
+
+// 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -452,3 +415,13 @@ function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALL
             "workout type", this.workoutType
             )            
     }
+
+    Exercise.prototype.reportExercise = function () {
+        console.log(
+            "name", this.exerciseName, 
+            "sets", this.setsNumber,
+            "reps", this.repsNumber,
+            "RIR", this.rir,
+            "rest", this.restTime,
+        )
+}
