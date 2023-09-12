@@ -1,5 +1,5 @@
 
-
+// MODALS FOR ADD A WORKOUT AND ADD AN EXERCISE FUNCTIONALITY
 
 function manageWorkoutModal() { // ADD WORKOUT MODAL ARCHITECTURE
 
@@ -93,8 +93,10 @@ function manageWorkoutModal() { // ADD WORKOUT MODAL ARCHITECTURE
 
         let fullFieldsExercise = requiredFieldsWorkout(date, time, workoutType, dateError, timeError, workoutTypeError)
         if (fullFieldsExercise) {
+
             containerModal1.style.display = "none"
 
+            createWorkoutObj(date, time, workoutType)
         }
 
     }
@@ -125,7 +127,6 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
     cancelButton2.addEventListener('click', function () { // if X clicked modal removed (display = none)
         containerModal2.style.display = "none";
     })
-
 
 
     // validation
@@ -258,6 +259,7 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
 
         if (rangesValid) {
             containerModal2.style.display = "none"
+            
             createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir)
         }
     }
@@ -268,25 +270,21 @@ manageExerciseModal();
 
 
 
-// constructor functions to create objs, funcs to store them into arrays
+// CONSTRUCTOR FUNCS TO CREATE OBJS AND FUNCS TO STORE THEM INTO ARRAYS
 
 const myWorkoutList = []
 const myExerciseList = []
 
 function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORING IN ARRAY
+    console.log("inside constructor", date, time, workoutType)
     Object.assign(this, {date, time, workoutType})
+    
 }
 
-Workout.prototype.reportWorkout = function () {
-    console.log(
-        "date", this.date,
-        "time", this.time,
-        "workout type", this.workoutType
-        )            
-}
 
 function createWorkoutObj(date, time, workoutType) {
-
+    
+    
     let currentWorkoutStorer = new Workout(date, time, workoutType)
     myWorkoutList.push(currentWorkoutStorer)
 
@@ -298,9 +296,26 @@ function createWorkoutObj(date, time, workoutType) {
         myWorkoutList[3],
         myWorkoutList[4],
         myWorkoutList[5],
-        "my full array", myWorkoutList)
+        "my full array", myWorkoutList) 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) { // EXERCISE OBJECT BUILDER AND STORING IN ARRAY
@@ -341,11 +356,83 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
-// PART 2 - UI COMPONENTS OF FINAL JS LOGIC
-    // REFERENCE THE OBJ VIA ARRAY[INDEX] AND ASSIGN THE CONTENTS TO A DIV USING .TEXTCONTENTS
+
+
+// FUNC THAT CREATES THE ADDED WORKOUT DOM ELEMENT TO BE ADDED TO THE DOM U
+
+/* let displayWorkoutsDiv = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
+
+function createDomWorkoutElement(workoutObjs) {
+
+    let objDate = workoutObjs.date
+    let objTime = workoutObjs.time
+    let objWorkoutType = workoutObjs.time
+
+    console.log(
+        workoutObjs.date,
+        workoutObjs.time,
+        workoutObjs.time
+    )
+
+    let displayWorkoutItems = displayWorkoutsDiv.createElement('div') 
+
+    displayWorkoutItems.className = 'workout-items'
+    displayWorkoutItems.innerHtml = `<h1>${objDate}</h1>` // date variable goes in here
+    displayWorkoutItems.innerHtml = `<p>${objWorkoutType}</p>` // workout type variable goes in here
+
+
+}
+
+
+
+
+
+
+// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM
+
+function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALLING FUNC THAT WILL DISPLAY
+
+
+    myWorkoutList.forEach(workoutObjs => {
+
+        createDomWorkoutElement(workoutObjs)
+
+        
+    });
+
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PART 1 - DISPLAYING TO THE DOM
+    // FUNC THAT LOOPS THROUGH myWorkoutList AND myExerciseList AND DISPLAYS TO THE DOM WHATS IN THERE
+        // REQUIRES DOM MANIPULATION TO ADD CONTENT TO DIVS + LOOP LOGIC 
+
+// PART 2 - CONNECT EACH ADD A WORKOUT TO INDIVIDUAL ADD EXERCISE PAGES
+    // REF# THE OBJ VIA ARRAY[INDEX] AND ASSIGN THE CONTENTS TO A DIV USING .TEXTCONTENTS
     // ADD A DELETE BUTTON TO THAT DIV DYNAMICALLY USING CURRENTDIV.ADDELEM AND REF IT TO REMOVE ARR ELEM USING A METHOD
 
 
+// PART 3 - DELETE BUTTON & COMPLETE BUTTON
+    // 
 
 
 
@@ -358,3 +445,10 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
+    Workout.prototype.reportWorkout = function () {
+        console.log(
+            "date", this.date,
+            "time", this.time,
+            "workout type", this.workoutType
+            )            
+    }
