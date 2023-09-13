@@ -277,14 +277,13 @@ manageExerciseModal();
 const myWorkoutList = []
 const myExerciseList = []
 
+
 function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORING IN ARRAY
     Object.assign(this, {date, time, workoutType})
     
 }
 
-
 function createWorkoutObj(date, time, workoutType) {
-    
     
     let currentWorkoutStorer = new Workout(date, time, workoutType)
     myWorkoutList.push(currentWorkoutStorer)
@@ -300,6 +299,7 @@ function createWorkoutObj(date, time, workoutType) {
         "my full array", myWorkoutList) 
 
 }
+
 
 
 function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) { // EXERCISE OBJECT BUILDER AND STORING IN ARRAY
@@ -329,29 +329,30 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 // FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM
 
-let displayWorkoutsDiv = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
+let divForWorkoutsDisplay = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
 
 function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALLING FUNC THAT WILL DISPLAY
+   
+    divForWorkoutsDisplay.innerHTML = ''
+
     myWorkoutList.forEach((listItem) => {
-
-        // wipe the dom here
-        displayWorkoutsDiv.innerHTML = '';
         
-
         let displayWorkoutItems = document.createElement('div')
         displayWorkoutItems.className = 'workout-items'
 
         displayWorkoutItems.innerHTML = `<p>${listItem.date}</p>` // date variable goes in here
         displayWorkoutItems.innerHTML += `<p>${listItem.workoutType}</p>` // workout type variable goes in here
         
-        displayWorkoutsDiv.appendChild(displayWorkoutItems)
+        divForWorkoutsDisplay.appendChild(displayWorkoutItems)
 
         
     }); 
 
 } 
 
-// 
+
+
+ 
 
 
 
