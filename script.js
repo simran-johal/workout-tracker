@@ -272,6 +272,17 @@ manageExerciseModal();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 // CONSTRUCTOR FUNCS TO CREATE OBJS AND FUNCS TO STORE THEM INTO ARRAYS
 
 const myWorkoutList = []
@@ -327,13 +338,52 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM
 
+
 let divForWorkoutsDisplay = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
+let exerciseSect = document.getElementById('add-exercise-section')
+
+
+
+function displayDefaultBlankExerciseSect() { // dynamic DOM default logic (add)
+
+    let defaultExerciseSectDiv = document.createElement('div')
+    defaultExerciseSectDiv.className = 'default-exercise-sect-div'
+    defaultExerciseSectDiv.innerHTML = '<p>No workouts added yet. Add a workout to start adding exercises.</p>'
+    exerciseSect.appendChild(defaultExerciseSectDiv)
+
+}
+
+function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
+
+    let defaultExerciseSectDiv = exerciseSect.querySelector('.default-exercise-sect-div')
+    if (defaultExerciseSectDiv) {
+        exerciseSect.removeChild(defaultExerciseSectDiv)
+    }
+
+}
 
 function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALLING FUNC THAT WILL DISPLAY
    
     divForWorkoutsDisplay.innerHTML = ''
+
+    isMyWorkoutArrayEmpty()
 
     myWorkoutList.forEach((listItem) => {
         
@@ -352,8 +402,6 @@ function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALL
         workoutTypeParaElement.className = 'add-workout-list-item-workout-type'
         workoutTypeParaElement.textContent = listItem.workoutType
 
-
-
         displayWorkoutItems.appendChild(dateParaElement)
         displayWorkoutItems.appendChild(timeParaElement)
         displayWorkoutItems.appendChild(workoutTypeParaElement)
@@ -365,6 +413,51 @@ function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALL
     }); 
 
 } 
+
+displayWorkouts(myWorkoutList) // calling func so it runs when page loads at beginning
+
+
+function isMyWorkoutArrayEmpty() {
+    
+    if (myWorkoutList.length === 0) {
+
+        let exerciseSectContent = document.getElementById('exercise-sect-content') // < input here the div that will be container for exercise section
+        exerciseSectContent.style.display = "none" 
+        displayDefaultBlankExerciseSect();
+
+        return;
+
+    } else {
+    
+        let exerciseSectContent = document.getElementById('exercise-sect-content') // < input here the div that will be container for exercise section
+        exerciseSectContent.style.display = "block" 
+        removeDefaultBlankExerciseSect()
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THEN CONNECTING EACH WORKOUT TO OWN EXERCISE SECTION
+
+
+
 
 
 
@@ -402,9 +495,6 @@ function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALL
 
 
 
-// PART 1 - DISPLAYING TO THE DOM
-    // FUNC THAT LOOPS THROUGH myWorkoutList AND myExerciseList AND DISPLAYS TO THE DOM WHATS IN THERE
-        // REQUIRES DOM MANIPULATION TO ADD CONTENT TO DIVS + LOOP LOGIC 
 
 // PART 2 - CONNECT EACH ADD A WORKOUT TO INDIVIDUAL ADD EXERCISE PAGES
     // REF# THE OBJ VIA ARRAY[INDEX] AND ASSIGN THE CONTENTS TO A DIV USING .TEXTCONTENTS

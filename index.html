@@ -28,52 +28,41 @@
       <!-- MAJOR MAIN COMPONENT 1 -->
       <div id="add-workout-section">
 
-        <h3>Your Workouts</h3>
-        <button id="open-modal-add-workout-button">Add Workout</button>
-        <div id="your-workouts-display"></div> <!-- DOM DISPLAY -->
-
-
-
-        <div id="add-workout-modal-container" class="add-workout-modal-container">
-
-          <div class="add-workout-modal-content borders">
+          <h3>Your Workouts</h3>
+          <button id="open-modal-add-workout-button">Add Workout</button>
+          <div id="your-workouts-display">
+          </div> <!-- DOM DISPLAY -->
+              <div id="add-workout-modal-container" class="add-workout-modal-container">
+                  <div class="add-workout-modal-content borders">
+                      <div id="cancel1" class="borders">&times;</div> 
+                      <h2 id="your-workout-header"class="borders">Add a Workout</h2>
+                      <form id="add-workout-form">
+                          <div class="form-input-sections-workout borders workout-form-input-sections-label ">
+                              <label for="date-picking" class="borders ">Date:</label>
+                              <input type="date" id="date-picking" name="date-picker" class="borders ">
+                              <div id="date-error" class="error-message borders "></div>
+                          </div>
+              
+                          <div class="form-input-sections-workout borders workout-form-input-sections-label "> 
+                              <label for="time-picking" class="borders ">Time:</label>
+                              <input type="time" id="time-picking" name="time-picker" class="borders ">
+                              <div id="time-error" class="error-message borders "></div>
+                          </div>
+              
+                          <div class="form-input-sections-workout borders workout-form-input-sections-label ">
+                              <label for="workout-type" class="borders ">Workout Type</label>
+                              <select id="workout-type" name="workout-selector" class="borders " >
+                                  <option value="" disabled selected>Select a Workout Type</option></option>
+                                  <option value="weight-training">Weight Training</option>
+                                  <option value="circuit-training">Circuit Training</option>
+                              </select>
+                              <div id="workout-type-error" class="error-message borders "></div>
+                          </div>
+                          <button type="submit" id="submit-workout" class="borders form-input-sections form-input-sections-workout">Add</button>
+                      </form>  
   
-            <div id="cancel1" class="borders">&times;</div> 
-            <h2 id="your-workout-header"class="borders">Add a Workout</h2>
-      
-    
-            <form id="add-workout-form">
-
-              <div class="form-input-sections-workout borders workout-form-input-sections-label ">
-                <label for="date-picking" class="borders ">Date:</label>
-                <input type="date" id="date-picking" name="date-picker" class="borders ">
-                <div id="date-error" class="error-message borders "></div>
+                  </div>
               </div>
-              
-              <div class="form-input-sections-workout borders workout-form-input-sections-label "> 
-                <label for="time-picking" class="borders ">Time:</label>
-                <input type="time" id="time-picking" name="time-picker" class="borders ">
-                <div id="time-error" class="error-message borders "></div>
-              </div>
-              
-              <div class="form-input-sections-workout borders workout-form-input-sections-label ">
-                <label for="workout-type" class="borders ">Workout Type</label>
-                <select id="workout-type" name="workout-selector" class="borders " >
-                  <option value="" disabled selected>Select a Workout Type</option></option>
-                  <option value="weight-training">Weight Training</option>
-                  <option value="circuit-training">Circuit Training</option>
-                </select>
-                <div id="workout-type-error" class="error-message borders "></div>
-              </div>
-              
-              
-              <button type="submit" id="submit-workout" class="borders form-input-sections form-input-sections-workout">Add</button>
-              
-            </form>  
-  
-          </div>
-  
-        </div>
       
       </div>
 
@@ -81,76 +70,52 @@
       <!-- MAJOR MAIN COMPONENT 2 -->
       
       <div id="add-exercise-section">
-        <h3>Your Exercises</h3>
-        <button id="open-modal-add-exercise-button">Add Exercise</button>
-      
-        <div id="add-exercise-modal-container" class="add-exercise-modal-container">
-        <div class="add-exercise-modal-content">
 
+          <div id="exercise-sect-content"> 
+              <h3>Your Exercises</h3>
+              <button id="open-modal-add-exercise-button">Add Exercise</button>
+              <div id="add-exercise-modal-container" class="add-exercise-modal-container">
+                  <div class="add-exercise-modal-content">
+                      <div id="cancel2">&times;</div>
+                      <h2 id="your-exercise-header">Add an Exercise</h2>
+                      <form id="add-exercise-form">
+              <div class="form-input-sections-exercise exercise-form-input-sections-label">
+                <label for="exercise-name">Exercise:</label>
+                <textarea id="exercise-name" name="textbox-for-exercise" rows="1" cols="35"></textarea>
+                <div id="exercise-name-error" class="error-message"></div>
+              </div>
 
-          <div id="cancel2">&times;</div>
-          <h2 id="your-exercise-header">Add an Exercise</h2>
-    
-          <form id="add-exercise-form">
+              <div class="form-input-sections-exercise exercise-form-input-sections-label">
+                <label for="number-of-sets">Sets (0-10):</label>
+                <textarea id="number-of-sets" name="textbox-for-sets" rows="1" cols="35"></textarea>
+                <div id="number-of-set-error" class="error-message"></div>
+              </div>
 
+              <div class="form-input-sections-exercise exercise-form-input-sections-label">
+                <label for="number-of-reps">Reps (0-50):</label>
+                <textarea id="number-of-reps" name="textbox-for-reps" rows="1" cols="35"></textarea>
+                <div id="number-of-reps-error" class="error-message"></div>
+              </div>
 
+              <div class="form-input-sections-exercise exercise-form-input-sections-label">
+                <label for="rest-time">Rest Time (mins):</label>
+                <textarea id="rest-time" name="textbox-for-rest" rows="1" cols="35"></textarea>
+                <div id="rest-time-error" class="error-message"></div>
+              </div>
 
-            <div class="form-input-sections-exercise exercise-form-input-sections-label">
-              <label for="exercise-name">Exercise:</label>
-              <textarea id="exercise-name" name="textbox-for-exercise" rows="1" cols="35"></textarea>
-              <div id="exercise-name-error" class="error-message"></div>
-            </div>
+              <div class="form-input-sections-exercise exercise-form-input-sections-label">
+                <label for="rir">Reps in reserve (1-10):</label>
+                <textarea id="reps-in-reserve" name="textbox-for-rir" rows="1" cols="35"></textarea>
+                <div id="reps-in-reserve-error" class="error-message"></div>
+              </div>
 
-            <div class="form-input-sections-exercise exercise-form-input-sections-label">
-              <label for="number-of-sets">Sets (0-10):</label>
-              <textarea id="number-of-sets" name="textbox-for-sets" rows="1" cols="35"></textarea>
-              <div id="number-of-set-error" class="error-message"></div>
-            </div>
-
-            <div class="form-input-sections-exercise exercise-form-input-sections-label">
-              <label for="number-of-reps">Reps (0-50):</label>
-              <textarea id="number-of-reps" name="textbox-for-reps" rows="1" cols="35"></textarea>
-              <div id="number-of-reps-error" class="error-message"></div>
-            </div>
-
-            <div class="form-input-sections-exercise exercise-form-input-sections-label">
-              <label for="rest-time">Rest Time (mins):</label>
-              <textarea id="rest-time" name="textbox-for-rest" rows="1" cols="35"></textarea>
-              <div id="rest-time-error" class="error-message"></div>
-            </div>
-
-            <div class="form-input-sections-exercise exercise-form-input-sections-label">
-              <label for="rir">Reps in reserve (1-10):</label>
-            <textarea id="reps-in-reserve" name="textbox-for-rir" rows="1" cols="35"></textarea>
-            <div id="reps-in-reserve-error" class="error-message"></div>
-            </div>
-
-            <div class="form-input-sections-exercise">
-              <button type="submit" id="submit-exercise">Add</button>
-            </div>
-            
-
-            
-
-           
-
-            
-
-            
-
-            
-
-
-
-            
-
-          </form>
-        
-        
-        
-        </div>
-      </div>
-
+              <div class="form-input-sections-exercise">
+                <button type="submit" id="submit-exercise">Add</button>
+              </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
 
       </div>
       

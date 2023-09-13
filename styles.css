@@ -31,6 +31,9 @@ h1 {
 }
 
 
+
+
+
 /* HEADER MAIN FOOTER NAV STYLING */
 
 header {
@@ -45,7 +48,7 @@ header {
 }
 
 main {
-   /* border: solid 1px red; */
+    border: solid 1px red;
     height: calc(100vh - 150px);
     width: 100vw;
     display: flex;
@@ -55,29 +58,6 @@ main {
 
 }
 
-
-#add-workout-section {
-   /*  border: solid 1px lightgreen; */
-    background-color: lightgrey;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    align-items: center;
-    
-
-}
-
-
-#add-exercise-section {
-    background-color: white;
-    /* border: solid 1px yellow; */
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    
-}
 
 
 footer {
@@ -98,16 +78,20 @@ footer {
 
 
 
-
-
-
-
-
-
-
-
-
 /* ADD WORKOUT BUTTON MODAL */
+
+
+#add-workout-section {
+    border: solid 1px lightgreen; 
+    background-color: lightgrey;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    
+
+}
 
 .add-workout-modal-container { 
     display: none; 
@@ -186,12 +170,10 @@ footer {
 }
 
 
-
 .error-message {
     margin: 0;
     padding: 0;
 }
-
 
 
 .border {
@@ -205,14 +187,19 @@ footer {
 
 
 
-
-
-
-
-
-
-
 /* ADD EXERCISE BUTTON MODAL */
+
+#add-exercise-section {
+    background-color: white;
+    border: solid 1px yellow; 
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    
+}
+
 
 .add-exercise-modal-container { 
     display: none; 
@@ -281,7 +268,6 @@ footer {
 }
 
 
-
 .form-input-sections-exercise {
     margin: 15px;
 }
@@ -339,6 +325,50 @@ footer {
     border: solid 1px green;
     margin: 0;
 }
+
+
+/* EXERCISE ITEMS DISPLAYED IN DOM */
+
+
+
+
+/* DEFAULT EXERCISE SECTION DYNAMIC DOM */
+
+
+.default-exercise-sect-div {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
