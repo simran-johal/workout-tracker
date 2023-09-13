@@ -337,13 +337,29 @@ function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALL
 
     myWorkoutList.forEach((listItem) => {
         
-        let displayWorkoutItems = document.createElement('div')
-        displayWorkoutItems.className = 'workout-items'
+        let displayWorkoutItems = document.createElement('div') // create the dynamic div
+        displayWorkoutItems.className = 'workout-items' // give it the class workout-items
 
-        displayWorkoutItems.innerHTML = `<p>${listItem.date}</p>` // date variable goes in here
-        displayWorkoutItems.innerHTML += `<p>${listItem.workoutType}</p>` // workout type variable goes in here
-        
+        let dateParaElement = document.createElement('p')
+        dateParaElement.className = 'add-workout-list-item-date'
+        dateParaElement.textContent = listItem.date
+
+        let timeParaElement = document.createElement('p')
+        timeParaElement.className = 'add-workout-list-item-time'
+        timeParaElement.textContent = listItem.time
+
+        let workoutTypeParaElement = document.createElement('p')
+        workoutTypeParaElement.className = 'add-workout-list-item-workout-type'
+        workoutTypeParaElement.textContent = listItem.workoutType
+
+
+
+        displayWorkoutItems.appendChild(dateParaElement)
+        displayWorkoutItems.appendChild(timeParaElement)
+        displayWorkoutItems.appendChild(workoutTypeParaElement)
+
         divForWorkoutsDisplay.appendChild(displayWorkoutItems)
+
 
         
     }); 

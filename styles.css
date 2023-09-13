@@ -325,6 +325,29 @@ footer {
     background-color: grey;
 }
 
+.add-workout-list-item-date {
+    border: solid 1px yellow;
+    margin: 0;
+}
+
+.add-workout-list-item-time {
+    border: solid 1px blue;
+    margin: 0;
+}
+
+.add-workout-list-item-workout-type {
+    border: solid 1px green;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
 
 
 
