@@ -72,9 +72,17 @@ footer {
    
 
 
+/* MISC */
+
+.error-message {
+    margin: 0;
+    padding: 0;
+}
 
 
-
+.border {
+    border: solid 1px purple;
+}
 
 
 
@@ -169,118 +177,10 @@ footer {
     
 }
 
-
-.error-message {
-    margin: 0;
-    padding: 0;
-}
-
-
-.border {
+#workout-h3-btn-container {
+    background-color: lightgoldenrodyellow;
+    padding: 5px;
     border: solid 1px purple;
-}
-
-
-
-
-
-
-
-
-/* ADD EXERCISE BUTTON MODAL */
-
-#add-exercise-section {
-    background-color: white;
-    border: solid 1px yellow; 
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    
-}
-
-
-.add-exercise-modal-container { 
-    display: none; 
-    z-index: 1; 
-    position: fixed; 
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4); 
-    /* Overlay background */
-    
-}
-
-.add-exercise-modal-content { 
-    background-color: #fefefe;
-    margin: 300px auto;
-    width: 400px;
-    max-width: 600px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 5%;
-
-}
-
-
-#cancel2 {
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    border-radius: 50%;
-    padding: 5px 15px;
-    border: solid 1px black
-}
-
-#cancel2:hover {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.error-message {
-    color: red;
-}
-
-
-#your-exercise-header {
-    margin-bottom: 20px;
-}
-
-
-#add-exercise-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    
-    /* border: solid 3px purple; */
-    
-}
-
-
-.form-input-sections-exercise {
-    margin: 15px;
-}
-
-
-.exercise-form-input-sections-label {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    flex-direction: column;
-    gap: 10px;
-    
-    
 }
 
 
@@ -289,10 +189,9 @@ footer {
 /* WORKOUT ITEMS DISPLAYED IN DOM */
 
 #your-workouts-display {
-    /* border: solid 1px black; */
+    border: solid 1px black; 
     width: 80%
 }
-
 
 .workout-items {
     font-size: xx-small;
@@ -328,7 +227,175 @@ footer {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ADD EXERCISE BUTTON MODAL */
+
+#add-exercise-section {
+    background-color: white;
+    border: solid 1px yellow; 
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    /*align-items: flex-start;*/
+
+    
+}
+
+.add-exercise-modal-container { 
+    display: none; 
+    z-index: 1; 
+    position: fixed; 
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+    /* Overlay background */
+    
+}
+
+.add-exercise-modal-content { 
+    background-color: #fefefe;
+    margin: 300px auto;
+    width: 400px;
+    max-width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 5%;
+
+}
+
+#cancel2 {
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    border-radius: 50%;
+    padding: 5px 15px;
+    border: solid 1px black
+}
+
+#cancel2:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+}
+
+#your-exercise-header {
+    margin-bottom: 20px;
+}
+
+#add-exercise-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    
+    /* border: solid 3px purple; */
+    
+}
+
+.form-input-sections-exercise {
+    margin: 15px;
+}
+
+.exercise-form-input-sections-label {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    gap: 10px;
+    
+    
+}
+
+
+
 /* EXERCISE ITEMS DISPLAYED IN DOM */
+
+
+#your-exercise-display {
+    border: solid 1px black; 
+    width: 100%
+    
+
+}
+
+.exercise-items {
+    font-size: xx-small;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+    border-radius: 10%;
+    gap: 1px;
+    border: solid 1px black;
+    padding: 5px;
+}
+
+.exercise-items:hover {
+    background-color: grey;
+}
+
+.add-exercise-list-item-name {
+    border: solid 1px yellow;
+    margin: 0;
+}
+
+.add-exercise-list-item-sets {
+    border: solid 1px blue;
+    margin: 0;
+}
+
+.add-exercise-list-item-reps {
+    border: solid 1px purple;
+    margin: 0;
+}
+
+.add-exercise-list-item-rest {
+    border: solid 1px brown;
+    margin: 0;
+}
+
+.add-exercise-list-item-rir {
+    border: solid 1px red;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

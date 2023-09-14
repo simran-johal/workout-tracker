@@ -263,6 +263,8 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
             containerModal2.style.display = "none"
 
             createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir)
+
+            displayExercises(myExerciseList) // on submit run func that displays it to dom
         }
     }
     }
@@ -340,6 +342,58 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
+// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD WORKOUT MODAL
+
+
+let divForExerciseDisplay = document.getElementById('your-exercise-display') // selecting the display div container
+
+
+function displayExercises(myExerciseList) {// logic of displaying dynamic exercises elements to dom if objArray not empty
+
+    divForExerciseDisplay.innerHTML = '' 
+
+    myExerciseList.forEach((listItem) => {
+
+        // dynamic created dom elements dynamic div container 
+        let displayExerciseItems = document.createElement('div') // create the dynamic dom div
+        displayExerciseItems.className = 'exercise-items' // giving it the class of exercise-items
+
+        // dynamic created dom elements to go inside dynamic div container
+        let exerciseNameElement = document.createElement('p')
+        exerciseNameElement.className = 'add-exercise-list-item-name'
+        exerciseNameElement.textContent = 'Exercise Name: ' + listItem.exerciseName
+
+        let setsNumberElement = document.createElement('p')
+        setsNumberElement.className = 'add-exercise-list-item-sets'
+        setsNumberElement.textContent = 'Number of Sets:' + listItem.setsNumber
+
+        let repsNumberElement = document.createElement('p')
+        repsNumberElement.className = 'add-exercise-list-item-reps'
+        repsNumberElement.textContent = 'Number of Reps:' + listItem.repsNumber
+
+        let restTimeElement = document.createElement('p')
+        restTimeElement.className = 'add-exercise-list-item-rest'
+        restTimeElement.textContent = 'Rest Time:' + listItem.restTime
+
+        let rirElement = document.createElement('p')
+        rirElement.className = 'add-exercise-list-item-rir'
+        rirElement.textContent = 'Reps in Reserve: ' + listItem.rir
+
+        divForExerciseDisplay.appendChild(displayExerciseItems)
+
+        displayExerciseItems.appendChild(exerciseNameElement)
+        displayExerciseItems.appendChild(setsNumberElement)
+        displayExerciseItems.appendChild(repsNumberElement)
+        displayExerciseItems.appendChild(restTimeElement)
+        displayExerciseItems.appendChild(rirElement)
+
+
+    })
+
+}
+
+
+    
 
 
 
@@ -352,8 +406,7 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
-
-// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM
+// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD WORKOUT MODAL
 
 
 let divForWorkoutsDisplay = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
@@ -379,7 +432,26 @@ function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
 
 }
 
-function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALLING FUNC THAT WILL DISPLAY
+function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not and call relevent func
+
+    if (myWorkoutList.length === 0) {
+
+        let exerciseSectContent = document.getElementById('exercise-sect-content') // < input here the div that will be container for exercise section
+        exerciseSectContent.style.display = "none" // no button or h2 shown
+        displayDefaultBlankExerciseSect();
+
+        return;
+
+    } else {
+    
+        let exerciseSectContent = document.getElementById('exercise-sect-content') // < input here the div that will be container for exercise section
+        exerciseSectContent.style.display = "block" 
+        removeDefaultBlankExerciseSect()
+
+    }
+}
+
+function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout elements to dom if objArray not empty
    
     divForWorkoutsDisplay.innerHTML = ''
 
@@ -414,54 +486,27 @@ function displayWorkouts(myWorkoutList) { // LOOPING THROUGH EACH INDEX AND CALL
 
 } 
 
-displayWorkouts(myWorkoutList) // calling func so it runs when page loads at beginning
+displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
 
 
-function isMyWorkoutArrayEmpty() {
-    
-    if (myWorkoutList.length === 0) {
 
-        let exerciseSectContent = document.getElementById('exercise-sect-content') // < input here the div that will be container for exercise section
-        exerciseSectContent.style.display = "none" 
-        displayDefaultBlankExerciseSect();
+// CONNECTING EACH WORKOUT TO OWN EXERCISE SECTION
 
-        return;
+// Add an identifier to workout objs
+    // inside Workout constructor function add an id: workoutID++ to act as a counter
 
-    } else {
-    
-        let exerciseSectContent = document.getElementById('exercise-sect-content') // < input here the div that will be container for exercise section
-        exerciseSectContent.style.display = "block" 
-        removeDefaultBlankExerciseSect()
+// Modify the displayWorkouts() function 
+    // when creating the dynamic div that displays as our added workout add an event listener
+    // make event listener display corresponding 'Add Exercise' section 
+    // assign a data attribute with the workout ID
 
-    }
-}
+// Create a func to display the Add Exercise Section
+    // func takes workout ID as arg, displays corresponding Add exercise section
+    // hide all 'Add Exercise sections & display only one that corresponds to clicked workout
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// THEN CONNECTING EACH WORKOUT TO OWN EXERCISE SECTION
-
-
-
-
-
-
- 
 
 
 
