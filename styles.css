@@ -289,7 +289,7 @@ footer {
 /* WORKOUT ITEMS DISPLAYED IN DOM */
 
 #your-workouts-display {
-    border: solid 1px black;
+    /* border: solid 1px black; */
     width: 80%
 }
 
@@ -304,6 +304,7 @@ footer {
     border-radius: 10%;
     gap: 1px;
     border: solid 1px black;
+    padding: 5px;
     
 }
 
