@@ -289,17 +289,18 @@ manageExerciseModal();
 
 const myWorkoutList = []
 const myExerciseList = []
+let workoutID = 0 // counter to associate exercise section to it
 
 
 function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORING IN ARRAY
-    Object.assign(this, {date, time, workoutType})
+    Object.assign(this, {date, time, workoutType, id: workoutID++})
     
 }
-
-function createWorkoutObj(date, time, workoutType) {
+function createWorkoutObj(date, time, workoutType, id) {
     
-    let currentWorkoutStorer = new Workout(date, time, workoutType)
+    let currentWorkoutStorer = new Workout(date, time, workoutType, id)
     myWorkoutList.push(currentWorkoutStorer)
+    console.log('tester', currentWorkoutStorer)
 
     console.log(
         "new instance workout obj:", currentWorkoutStorer,
@@ -312,15 +313,10 @@ function createWorkoutObj(date, time, workoutType) {
         "my full array", myWorkoutList) 
 
 }
-
-
-
 function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) { // EXERCISE OBJECT BUILDER AND STORING IN ARRAY
     Object.assign(this, {exerciseName, setsNumber, repsNumber, restTime, rir})
     
 }
-
-
 function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) {
     
     let currentExerciseStorer = new Exercise(exerciseName, setsNumber, repsNumber, restTime, rir)
@@ -340,13 +336,21 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 }
 
 
+// CONNECTING EACH WORKOUT TO OWN EXERCISE SECTION
 
 
-// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD WORKOUT MODAL
 
+
+
+
+
+
+
+
+
+// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD EXERCISE MODAL
 
 let divForExerciseDisplay = document.getElementById('your-exercise-display') // selecting the display div container
-
 
 function displayExercises(myExerciseList) {// logic of displaying dynamic exercises elements to dom if objArray not empty
 
@@ -393,26 +397,10 @@ function displayExercises(myExerciseList) {// logic of displaying dynamic exerci
 }
 
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
 // FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD WORKOUT MODAL
-
 
 let divForWorkoutsDisplay = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
 let exerciseSect = document.getElementById('add-exercise-section')
-
-
 
 function displayDefaultBlankExerciseSect() { // dynamic DOM default logic (add)
 
@@ -422,7 +410,6 @@ function displayDefaultBlankExerciseSect() { // dynamic DOM default logic (add)
     exerciseSect.appendChild(defaultExerciseSectDiv)
 
 }
-
 function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
 
     let defaultExerciseSectDiv = exerciseSect.querySelector('.default-exercise-sect-div')
@@ -431,7 +418,6 @@ function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
     }
 
 }
-
 function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not and call relevent func
 
     if (myWorkoutList.length === 0) {
@@ -450,7 +436,6 @@ function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not
 
     }
 }
-
 function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout elements to dom if objArray not empty
    
     divForWorkoutsDisplay.innerHTML = ''
@@ -480,20 +465,28 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
 
         divForWorkoutsDisplay.appendChild(displayWorkoutItems)
 
+        displayWorkoutItems.setAttribute('workout-id', listItem.id) // giving our workout items an attribute of the #id
 
-        
+        displayWorkoutItems.addEventListener('click', function() { // listener passes and calls func that executes code to determine which exercise sect to show
+
+            displayAddExerciseSection(listItem.id)
+
+        })
+
     }); 
 
 } 
-
 displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
 
+function displayAddExerciseSection(workoutID) {
 
 
-// CONNECTING EACH WORKOUT TO OWN EXERCISE SECTION
 
-// Add an identifier to workout objs
-    // inside Workout constructor function add an id: workoutID++ to act as a counter
+
+    
+}
+
+
 
 // Modify the displayWorkouts() function 
     // when creating the dynamic div that displays as our added workout add an event listener
@@ -510,6 +503,7 @@ displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
 
 
 
+   
 
 
 
@@ -541,13 +535,14 @@ displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
 
 
 
-// PART 2 - CONNECT EACH ADD A WORKOUT TO INDIVIDUAL ADD EXERCISE PAGES
-    // REF# THE OBJ VIA ARRAY[INDEX] AND ASSIGN THE CONTENTS TO A DIV USING .TEXTCONTENTS
-    // ADD A DELETE BUTTON TO THAT DIV DYNAMICALLY USING CURRENTDIV.ADDELEM AND REF IT TO REMOVE ARR ELEM USING A METHOD
+
+
+
 
 
 // PART 3 - DELETE BUTTON & COMPLETE BUTTON
-    // 
+    // delete workout button and delete exercise button
+    // add completed button for exercises and workouts
 
 
 

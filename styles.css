@@ -166,7 +166,6 @@ footer {
     margin: 15px;
 }
 
-
 .workout-form-input-sections-label {
     display: flex;
     justify-content: center;
@@ -180,7 +179,13 @@ footer {
 #workout-h3-btn-container {
     background-color: lightgoldenrodyellow;
     padding: 5px;
-    border: solid 1px purple;
+    border: solid 1px lightgrey;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
 }
 
 
@@ -189,8 +194,8 @@ footer {
 /* WORKOUT ITEMS DISPLAYED IN DOM */
 
 #your-workouts-display {
-    border: solid 1px black; 
-    width: 80%
+    /* border: solid 1px lightslategrey; */
+    width: 90%
 }
 
 .workout-items {
@@ -330,29 +335,40 @@ footer {
     
 }
 
+#exercise-h3-btn-container {
+    background-color: lightgoldenrodyellow;
+    padding: 5px;
+    border: solid 1px lightgrey;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
 
 
 /* EXERCISE ITEMS DISPLAYED IN DOM */
 
 
 #your-exercise-display {
-    border: solid 1px black; 
-    width: 100%
+    border: solid 1px lightgray; 
+    width: 100%;
+    
     
 
 }
 
-.exercise-items {
-    font-size: xx-small;
+.exercise-items { /* each bubble */
+    font-size: small;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-    margin: 5%;
-    border-radius: 10%;
+    margin: 2%;
+    border-radius: 50px ;
     gap: 1px;
     border: solid 1px black;
-    padding: 5px;
+    padding: 0;
 }
 
 .exercise-items:hover {
@@ -360,28 +376,28 @@ footer {
 }
 
 .add-exercise-list-item-name {
-    border: solid 1px yellow;
-    margin: 0;
+    border: solid 1px lightgrey;
+    margin: 5%;
 }
 
 .add-exercise-list-item-sets {
-    border: solid 1px blue;
-    margin: 0;
+    border: solid 1px lightgrey;
+    margin: 5%;
 }
 
 .add-exercise-list-item-reps {
-    border: solid 1px purple;
-    margin: 0;
+    border: solid 1px lightgrey;
+    margin: 5%;
 }
 
 .add-exercise-list-item-rest {
-    border: solid 1px brown;
-    margin: 0;
+    border: solid 1px lightgrey;
+    margin: 5%;
 }
 
 .add-exercise-list-item-rir {
-    border: solid 1px red;
-    margin: 0;
+    border: solid 1px lightgrey;
+    margin: 5%;
 }
 
 
