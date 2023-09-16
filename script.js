@@ -432,18 +432,21 @@ function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
 
 }
 
+let selectedWorkout = false
+
 function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not and call relevent func
 
     let exerciseSectContent = document.getElementsByName('exercise-sect-content')[0] // < input here the div that will be container for exercise section
+    removeDefaultBlankExerciseSect(); 
 
-    if (myWorkoutList.length === 0) {
+    if (!selectedWorkout) { 
 
         exerciseSectContent.style.display = "none" // no button or h2 shown
         
         // code for default page e.g. function defaultPage()
         let defaultExerciseSectDiv = document.createElement('div')
         defaultExerciseSectDiv.className = 'default-exercise-sect-div'
-        defaultExerciseSectDiv.innerHTML = '<p>No workouts added yet. Add a workout to start adding exercises.</p>'
+        defaultExerciseSectDiv.innerHTML = '<p>Add your workout and select it to start adding exercises.</p>'
         exerciseSect.appendChild(defaultExerciseSectDiv)
 
         return;
@@ -456,6 +459,8 @@ function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not
     }
 }
 
+
+
 function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout elements to dom if objArray not empty
    
     divForWorkoutsDisplay.innerHTML = ''
@@ -464,6 +469,7 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
 
     myWorkoutList.forEach((listItem) => {
         
+
         let displayWorkoutItems = document.createElement('div') // create the dynamic div
         displayWorkoutItems.className = 'workout-items' // give it the class workout-items
 
@@ -479,7 +485,8 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
         workoutTypeParaElement.className = 'add-workout-list-item-workout-type'
         workoutTypeParaElement.textContent = listItem.workoutType
 
-        displayWorkoutItems.setAttribute('workout-id', listItem.id) // giving our workout items an attribute of the #id
+        let listItemId = listItem.id
+        displayWorkoutItems.setAttribute('workout-id', listItemId) // giving our workout items an attribute of the #id
 
         
 
@@ -492,26 +499,37 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
         // creating a dynamic exercise section forEach obj array item
         let exerciseSectContent = document.createElement('div')
         exerciseSectContent.className = 'exercise-section'
-        exerciseSectContent.id = `exercise-section-${listItem.id}` // has id that uses workout id value to ref#
+        exerciseSectContent.id = `exercise-section-${listItemId}` // has id that uses workout id value to ref#
         exerciseSectContent.style.display = 'none'; // hidden by default
 
         exerciseSect.appendChild(exerciseSectContent)
 
-
-        displayWorkoutItems.addEventListener('click', function() { // listener passes and calls func that executes code to determine which exercise sect to show
-
-            displayAddExerciseSection(listItem.id)
-            console.log("Clicked workout-id:", this.getAttribute('workout-id'));
-
-        })
+        selectedWorkoutItem(displayWorkoutItems, listItemId)
+       
 
     }); 
 
 } 
 
+
+
+
+
+function selectedWorkoutItem(displayWorkoutItems, listItemId) {
+
+    displayWorkoutItems.addEventListener('click', function() {
+        displayAddExerciseSection(listItemId)
+        selectedWorkout = true
+        console.log("Clicked workout-id:", this.getAttribute('workout-id'));
+        isMyWorkoutArrayEmpty();
+    })
+
+
+}
+
+
+
 displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
-
-
 
 
 function displayAddExerciseSection(workoutId) {
@@ -519,21 +537,14 @@ function displayAddExerciseSection(workoutId) {
     console.log("click works", workoutId)
 
     document.querySelectorAll('.exercise-section').forEach(eachExerciseSection => {
-
         eachExerciseSection.style.display = "none"
     })
 
     const exerciseSection = document.getElementById(`exercise-section-${workoutId}`) 
+    exerciseSection.style.display = "block"
     
-    if (exerciseSection) {
-
-        exerciseSection.style.display = "block"
-       
-
-    } 
-
-
     
+
 }
 
 
