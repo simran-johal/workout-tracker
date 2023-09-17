@@ -154,13 +154,7 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
     validationExercise(exerciseName, setsNumber, repsNumber, restTime, rir, exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError)
     // calling validation & passing validation all arguments needed
 
-    /* console.log(
-        "exercise name", exerciseName,
-        "sets number", setsNumber,
-        "reps number", repsNumber,
-        "rest time", restTime,
-        "rir", rir
-        ) */
+   
     }) 
 
     function resetErrorMessagesExerciseBtn(exerciseNameError, setsNumberError, repsNumberError, restTimeError, rirError) {
@@ -265,6 +259,7 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
             createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir)
 
             displayExercises(myExerciseList) // on submit run func that displays it to dom
+            
         }
     }
     }
@@ -293,13 +288,13 @@ let workoutId = 0 // counter to associate exercise section to it
 
 
 function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORING IN ARRAY
-    Object.assign(this, {date, time, workoutType, id: workoutId++})
+    Object.assign(this, {date, time, workoutType, id: workoutId++, exercises: []})
     
 }
 
-function createWorkoutObj(date, time, workoutType, id) {
+function createWorkoutObj(date, time, workoutType, id, exercises) { // WORKOUT HAS NESTED EXERCISES ARRAY TO STORE EXERCISES IN
     
-    let currentWorkoutStorer = new Workout(date, time, workoutType, id)
+    let currentWorkoutStorer = new Workout(date, time, workoutType, id, exercises)
     myWorkoutList.push(currentWorkoutStorer)
 
 
@@ -432,7 +427,8 @@ function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
 
 }
 
-let selectedWorkout = false
+let selectedWorkout = false;
+let currentWorkoutId = null;
 
 function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not and call relevent func
 
@@ -488,8 +484,6 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
         let listItemId = listItem.id
         displayWorkoutItems.setAttribute('workout-id', listItemId) // giving our workout items an attribute of the #id
 
-        
-
         divForWorkoutsDisplay.appendChild(displayWorkoutItems)
         displayWorkoutItems.appendChild(dateParaElement)
         displayWorkoutItems.appendChild(timeParaElement)
@@ -503,6 +497,7 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
         exerciseSectContent.style.display = 'none'; // hidden by default
 
         exerciseSect.appendChild(exerciseSectContent)
+        
 
         selectedWorkoutItem(displayWorkoutItems, listItemId)
        
@@ -511,17 +506,16 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
 
 } 
 
+displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
 
-
-
-
-function selectedWorkoutItem(displayWorkoutItems, listItemId) {
+function selectedWorkoutItem(displayWorkoutItems, listItemId) { // listener for displayWorkouts
 
     displayWorkoutItems.addEventListener('click', function() {
         displayAddExerciseSection(listItemId)
         selectedWorkout = true
-        console.log("Clicked workout-id:", this.getAttribute('workout-id'));
+        console.log("here",listItemId)
         isMyWorkoutArrayEmpty();
+        currentWorkoutId = listItemId
     })
 
 
@@ -529,23 +523,42 @@ function selectedWorkoutItem(displayWorkoutItems, listItemId) {
 
 
 
-displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
 
 
-function displayAddExerciseSection(workoutId) {
 
-    console.log("click works", workoutId)
+function displayAddExerciseSection(workoutId) { // being passed as a number value
 
-    document.querySelectorAll('.exercise-section').forEach(eachExerciseSection => {
+    console.log("passed", workoutId)
+
+    document.querySelectorAll('.exercise-section').forEach(eachExerciseSection => { // hide all exercise sections
         eachExerciseSection.style.display = "none"
     })
 
-    const exerciseSection = document.getElementById(`exercise-section-${workoutId}`) 
-    exerciseSection.style.display = "block"
-    
+    const exerciseSection = document.getElementById(`exercise-section-${workoutId}`) // show exercise section associated with workout item selected
+    if (exerciseSection) {
+        exerciseSection.style.display = "block";
+    }
+
     
 
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
