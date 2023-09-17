@@ -258,7 +258,7 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
 
             createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir)
 
-            //displayExercises(myExerciseList) // on submit run func that displays it to dom
+            
             
 
         }
@@ -283,7 +283,7 @@ manageExerciseModal();
 
 // CONSTRUCTOR FUNCS TO CREATE OBJS AND FUNCS TO STORE THEM INTO ARRAYS
 
-const myWorkoutList = []
+let myWorkoutList = []
 const myExerciseList = []
 let workoutId = 0 // counter to associate exercise section to it
 
@@ -334,9 +334,10 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
-// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD EXERCISE MODAL
+// FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD EXERCISE MODAL - REDUNDANT
 
-/*let divForExerciseDisplay = document.getElementById('your-exercise-display') // selecting the display div container
+/*
+let divForExerciseDisplay = document.getElementById('your-exercise-display') // selecting the display div container
 
 function displayExercises(myExerciseList) {// logic of displaying dynamic exercises elements to dom if objArray not empty
 
@@ -466,8 +467,6 @@ function isMyWorkoutArrayEmpty() { // check if workout obj array is empty if so 
     }
 }
 
-
-
 function displayWorkouts(myWorkoutList) { // if objArray not empty display data as dom elements inside a div (all dynamic) & create a exercise section
    
     divForWorkoutsDisplay.innerHTML = ''
@@ -501,14 +500,22 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
         displayWorkoutItems.appendChild(workoutTypeParaElement)
 
 
-        // creating a dynamic exercise section forEach obj array item
+        // creating a dynamic exercise section forEach obj array item > TURN INTO ITS OWN FUNC
         let exerciseSectContent = document.createElement('div')
         exerciseSectContent.className = 'exercise-section'
         exerciseSectContent.id = `exercise-section-${listItemId}` // has id that uses workout id value to ref#
         exerciseSectContent.style.display = 'none'; // hidden by default
 
         exerciseSect.appendChild(exerciseSectContent)
-        
+
+        // creating the delete button for the workoutItems > TURN INTO ITS OWN FUNC
+        let workoutDeletebutton = document.createElement('button')
+        workoutDeletebutton.textContent = 'Delete'
+        workoutDeletebutton.className = 'workout-delete-button'
+        workoutDeletebutton.setAttribute('data-workout-id', listItemId)
+
+        displayWorkoutItems.appendChild(workoutDeletebutton);
+
 
         selectedWorkoutItem(displayWorkoutItems, listItemId)
        
@@ -517,6 +524,28 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
 
 } 
 displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
+
+divForWorkoutsDisplay.addEventListener('click', function(event) {
+
+    if (event.target.className === 'workout-delete-button') {
+
+        event.stopPropagation();
+        let workoutId = event.target.getAttribute('data-workout-id'); // Retrieve the workout ID from the data attribute
+        
+        
+        myWorkoutList = myWorkoutList.filter(workout => workout.id != workoutId);
+
+        let exerciseSectContent = document.getElementById(`exercise-section-${workoutId}`);
+        console.log(`exercise-section-${workoutId}`)
+
+        if (exerciseSectContent) {
+            exerciseSectContent.remove();
+        }
+
+        displayWorkouts(myWorkoutList);
+    }
+});
+
 
 
 function selectedWorkoutItem(displayWorkoutItems, listItemId) { // listens for selecting a workoutItem and displaying add exercise modal
@@ -546,10 +575,12 @@ function displayAddExerciseSection(workoutId) { // pass the workoutId of the cli
         exerciseSection.style.display = "block";
     }
 
-    // displayExercisesForWorkout(workoutId) // passing workoutId to func that will do the displaying of associated exercise items
+    console.log("displayaddexercise working")
+    
 
 
 }
+
 
 function addExercise(myExerciseObj) { // recieving exercise obj created from submit & pushing the exercises added to the workoutArray adding it within (e.g. selected)
 
@@ -563,6 +594,7 @@ function addExercise(myExerciseObj) { // recieving exercise obj created from sub
 
 
 }
+
 
 function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorkoutId from addExercise() & displays the exercises being added within specific workoutItem
 
@@ -612,32 +644,7 @@ function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorko
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Create a func to display the Add Exercise Section
-    // func takes workout ID as arg, displays corresponding Add exercise section
-    // hide all 'Add Exercise sections & display only one that corresponds to clicked workout
-
-
-
-
-// PART 3 - DELETE BUTTON & COMPLETE BUTTON
-    // delete workout button and delete exercise button
-    // add completed button for exercises and workouts
+// DELETE BUTTON FUNCTIONALITY
 
 
 
@@ -661,6 +668,27 @@ function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorko
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     Workout.prototype.reportWorkout = function () {
         console.log(
             "date", this.date,
@@ -678,3 +706,4 @@ function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorko
             "rest", this.restTime,
         )
 }
+*/
