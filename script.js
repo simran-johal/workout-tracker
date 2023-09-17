@@ -258,8 +258,9 @@ function manageExerciseModal() { // ADD EXERCISE MODAL ARCHITECTURE
 
             createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir)
 
-            displayExercises(myExerciseList) // on submit run func that displays it to dom
+            //displayExercises(myExerciseList) // on submit run func that displays it to dom
             
+
         }
     }
     }
@@ -306,7 +307,9 @@ function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) { // EXER
 function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) {
     
     let currentExerciseStorer = new Exercise(exerciseName, setsNumber, repsNumber, restTime, rir)
-    myExerciseList.push(currentExerciseStorer)
+    myExerciseList.push(currentExerciseStorer) // pushing to global myExerciseArray
+    addExercise(currentExerciseStorer) // passing to addExercise func (to add it to associated workout)
+
 
 
     console.log(
@@ -331,17 +334,13 @@ function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) 
 
 
 
-
-
-
 // FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD EXERCISE MODAL
 
-let divForExerciseDisplay = document.getElementById('your-exercise-display') // selecting the display div container
+/*let divForExerciseDisplay = document.getElementById('your-exercise-display') // selecting the display div container
 
 function displayExercises(myExerciseList) {// logic of displaying dynamic exercises elements to dom if objArray not empty
 
     divForExerciseDisplay.innerHTML = '' 
-
     myExerciseList.forEach((listItem) => {
 
         // dynamic created dom elements dynamic div container 
@@ -380,7 +379,21 @@ function displayExercises(myExerciseList) {// logic of displaying dynamic exerci
 
     })
 
-}
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -415,10 +428,11 @@ function displayExercises(myExerciseList) {// logic of displaying dynamic exerci
 
 let divForWorkoutsDisplay = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
 let exerciseSect = document.getElementById('add-exercise-section')
+let selectedWorkout = false;
+let currentWorkoutId = null;
 
 
-
-function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
+function removeDefaultBlankExerciseSect() { // logic to remove default page
 
     let defaultExerciseSectDiv = exerciseSect.querySelector('.default-exercise-sect-div')
     if (defaultExerciseSectDiv) {
@@ -427,12 +441,9 @@ function removeDefaultBlankExerciseSect() { // dynamic DOM default logic (rm)
 
 }
 
-let selectedWorkout = false;
-let currentWorkoutId = null;
+function isMyWorkoutArrayEmpty() { // check if workout obj array is empty if so create default page if not call removeDefault
 
-function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not and call relevent func
-
-    let exerciseSectContent = document.getElementsByName('exercise-sect-content')[0] // < input here the div that will be container for exercise section
+    let exerciseSectContent = document.getElementsByName('exercise-sect-content')[0] 
     removeDefaultBlankExerciseSect(); 
 
     if (!selectedWorkout) { 
@@ -457,7 +468,7 @@ function isMyWorkoutArrayEmpty() { // check if workout obj array is empty or not
 
 
 
-function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout elements to dom if objArray not empty
+function displayWorkouts(myWorkoutList) { // if objArray not empty display data as dom elements inside a div (all dynamic) & create a exercise section
    
     divForWorkoutsDisplay.innerHTML = ''
     isMyWorkoutArrayEmpty()
@@ -505,32 +516,28 @@ function displayWorkouts(myWorkoutList) { // logic of displaying dynamic workout
     }); 
 
 } 
-
 displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
 
-function selectedWorkoutItem(displayWorkoutItems, listItemId) { // listener for displayWorkouts
+
+function selectedWorkoutItem(displayWorkoutItems, listItemId) { // listens for selecting a workoutItem and displaying add exercise modal
 
     displayWorkoutItems.addEventListener('click', function() {
         displayAddExerciseSection(listItemId)
         selectedWorkout = true
         console.log("here",listItemId)
         isMyWorkoutArrayEmpty();
-        currentWorkoutId = listItemId
+        currentWorkoutId = listItemId // storing the current workoutItem interacting with
     })
 
 
 }
 
 
-
-
-
-
-function displayAddExerciseSection(workoutId) { // being passed as a number value
+function displayAddExerciseSection(workoutId) { // pass the workoutId of the clicked workoutItem here to use 
 
     console.log("passed", workoutId)
 
-    document.querySelectorAll('.exercise-section').forEach(eachExerciseSection => { // hide all exercise sections
+    document.querySelectorAll('.exercise-section').forEach(eachExerciseSection => { // then hide all exercise sections
         eachExerciseSection.style.display = "none"
     })
 
@@ -539,13 +546,70 @@ function displayAddExerciseSection(workoutId) { // being passed as a number valu
         exerciseSection.style.display = "block";
     }
 
-    
+    // displayExercisesForWorkout(workoutId) // passing workoutId to func that will do the displaying of associated exercise items
 
 
 }
 
+function addExercise(myExerciseObj) { // recieving exercise obj created from submit & pushing the exercises added to the workoutArray adding it within (e.g. selected)
+
+    const currentWorkout = myWorkoutList.find(workout => workout.id == currentWorkoutId) // if a workout in the workout array has an id that matches currentWorkoutId = true
+
+    if (currentWorkout) {
+        currentWorkout.exercises.push(myExerciseObj) // if do get a match then push & store it in it's nested exercise array property
+    }
+
+    displayExercisesForWorkout(currentWorkoutId) // updates the exercise display if all passes
 
 
+}
+
+function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorkoutId from addExercise() & displays the exercises being added within specific workoutItem
+
+    const currentWorkout = myWorkoutList.find(workout => workout.id == currentWorkoutId) // finding workout with id we recieved from addExercise()
+    if (!currentWorkout) return;
+
+    let divForExerciseDisplay = document.getElementById(`exercise-section-${currentWorkoutId}`) // selecting the display div container
+    divForExerciseDisplay.innerHTML = ""
+
+    currentWorkout.exercises.forEach((listItem) => {
+
+         // dynamic created dom elements dynamic div container 
+         let displayExerciseItems = document.createElement('div') // create the dynamic dom div
+         displayExerciseItems.className = 'exercise-items' // giving it the class of exercise-items
+ 
+         // dynamic created dom elements to go inside dynamic div container
+         let exerciseNameElement = document.createElement('p')
+         exerciseNameElement.className = 'add-exercise-list-item-name'
+         exerciseNameElement.textContent = 'Exercise Name: ' + listItem.exerciseName
+ 
+         let setsNumberElement = document.createElement('p')
+         setsNumberElement.className = 'add-exercise-list-item-sets'
+         setsNumberElement.textContent = 'Number of Sets:' + listItem.setsNumber
+ 
+         let repsNumberElement = document.createElement('p')
+         repsNumberElement.className = 'add-exercise-list-item-reps'
+         repsNumberElement.textContent = 'Number of Reps:' + listItem.repsNumber
+ 
+         let restTimeElement = document.createElement('p')
+         restTimeElement.className = 'add-exercise-list-item-rest'
+         restTimeElement.textContent = 'Rest Time:' + listItem.restTime
+ 
+         let rirElement = document.createElement('p')
+         rirElement.className = 'add-exercise-list-item-rir'
+         rirElement.textContent = 'Reps in Reserve: ' + listItem.rir
+ 
+         divForExerciseDisplay.appendChild(displayExerciseItems)
+ 
+         displayExerciseItems.appendChild(exerciseNameElement)
+         displayExerciseItems.appendChild(setsNumberElement)
+         displayExerciseItems.appendChild(repsNumberElement)
+         displayExerciseItems.appendChild(restTimeElement)
+         displayExerciseItems.appendChild(rirElement)
+
+    })
+
+}
 
 
 
