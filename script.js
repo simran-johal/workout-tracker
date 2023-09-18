@@ -479,13 +479,9 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
         let displayWorkoutItems = document.createElement('div') // create the dynamic div
         displayWorkoutItems.className = 'workout-items' // give it the class workout-items
 
-        let dateParaElement = document.createElement('p')
-        dateParaElement.className = 'add-workout-list-item-date'
-        dateParaElement.textContent = listItem.date
-
-        let timeParaElement = document.createElement('p')
-        timeParaElement.className = 'add-workout-list-item-time'
-        timeParaElement.textContent = listItem.time
+        let dateTimeParaElement = document.createElement('p')
+        dateTimeParaElement.className = 'add-workout-list-item-date-time'
+        dateTimeParaElement.textContent = `${listItem.date} at ${listItem.time}`
 
         let workoutTypeParaElement = document.createElement('p')
         workoutTypeParaElement.className = 'add-workout-list-item-workout-type'
@@ -495,9 +491,9 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
         displayWorkoutItems.setAttribute('workout-id', listItemId) // giving our workout items an attribute of the #id
 
         divForWorkoutsDisplay.appendChild(displayWorkoutItems)
-        displayWorkoutItems.appendChild(dateParaElement)
-        displayWorkoutItems.appendChild(timeParaElement)
+        displayWorkoutItems.appendChild(dateTimeParaElement)
         displayWorkoutItems.appendChild(workoutTypeParaElement)
+
 
 
         // creating a dynamic exercise section forEach obj array item > TURN INTO ITS OWN FUNC

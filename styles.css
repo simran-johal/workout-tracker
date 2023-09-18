@@ -77,6 +77,7 @@ footer {
 .error-message {
     margin: 0;
     padding: 0;
+    font-size: x-small;
 }
 
 
@@ -86,7 +87,7 @@ footer {
 
 
 
-/* ADD WORKOUT BUTTON SECTIONS (SECTION + MODAL */
+/* ADD WORKOUT SECTIONS MODAL */
 
 
 #add-workout-section {
@@ -114,9 +115,11 @@ footer {
     
 }
 
+
+
 .add-workout-modal-content { 
-    background-color: #fefefe;
-    margin: 300px auto;
+    background-color: #131313;
+    margin: 200px auto;
     width: 400px;
     max-width: 600px;
     height: 500px;
@@ -126,6 +129,9 @@ footer {
     align-items: center;
     position: relative;
     border-radius: 5%;
+    color: #FAFAFA;
+    border: solid 1px #393939
+    
 
 }
 
@@ -174,17 +180,102 @@ footer {
     gap: 10px;
     
     
+    
 }
+
+
+
+
+#date-picking-label {
+    color:#b8b8b8
+}
+
+#date-picking {
+    background-color: #2f2e2e;
+    border: #858585;
+    border-radius: 4px;
+    color: #b8b8b8;
+    padding: 5px;
+    cursor: pointer
+   
+}
+
+#time-picking-label {
+    color: #b8b8b8
+}
+
+#date-picking::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+#time-picking {
+    background-color: #2f2e2e;
+    border: #858585;
+    border-radius: 4px;
+    color: #b8b8b8;
+    padding: 5px;
+    cursor: pointer;
+    
+}
+
+#time-picking::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+  
+
+#workout-type-label {
+    color: #b8b8b8
+}
+
+#workout-type {
+    background-color: #2f2e2e;
+    border: #858585;
+    border-radius: 4px;
+    color: #b8b8b8;
+    padding: 5px;
+    cursor: pointer;
+    
+}
+
+#submit-workout {
+
+    border: none;
+    border-radius: 50px;
+    background-color: #FFE600;
+    padding: 20px;
+    cursor: pointer;
+
+}
+
+
+#submit-workout:hover {
+    background-color: #cfba03;
+
+}
+
+
+
+
+
+
+
+
+/* ADD WORKOUT SECTION + ITEMS */
 
 #open-modal-add-workout-button {
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     background-color: #FFE600;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 0px;
+    cursor: pointer
     
+}
+
+#open-modal-add-workout-button:hover {
+    background-color: #cfba03;
 }
 
 #workout-h3-btn-container {
@@ -221,9 +312,6 @@ footer {
 
 }
 
-
-/* WORKOUT ITEMS DISPLAYED IN DOM */
-
 #your-workouts-display {
     /* border: solid 1px lightslategrey; */
     width: 90%
@@ -237,41 +325,37 @@ footer {
     align-items: center;
     margin-top:  10%;
     margin-bottom: 10%;
-    border-radius: 5px;
     gap: 1px;
     /*border: solid 1px black;*/
     padding: 10px;
     position: relative;
     color: #FAFAFA;
-    background-color: #4a4a4a;
-    order: 
+    background-color: #525252;
+    border-radius: 5px;
+    cursor: pointer;
     
 }
 
 .workout-items:hover {
-    background-color: grey;
+    background-color: rgb(104, 104, 104);
 }
 
-.add-workout-list-item-date {
-    /*border: solid 1px yellow;*/
-    margin: 0;
-    color: #FFE600;
-    order: 2;
 
-}
-
-.add-workout-list-item-time {
-    /*border: solid 1px blue;*/
-    margin: 0;
+.add-workout-list-item-date-time {
+    margin-bottom: 5px;
     color: #FFE600;
     order: 3;
+    
 }
+
 
 .add-workout-list-item-workout-type {
     /*border: solid 1px green;*/
-    margin: 0;
+    margin-bottom: 0px;
     color: #FAFAFA;
     order: 1;
+    font-size: x-small;
+   
 }
 
 .workout-delete-button {
@@ -290,12 +374,8 @@ footer {
 
 .workout-delete-button:hover  {
     cursor: pointer;
+    color: darkgrey;
 }
-
-
-
-
-
 
 
 

@@ -47,19 +47,19 @@
                   <form id="add-workout-form">
                     
                       <div class="form-input-sections-workout borders workout-form-input-sections-label ">
-                          <label for="date-picking" class="borders ">Date:</label>
+                          <label id="date-picking-label" for="date-picking" class="borders ">Date</label>
                           <input type="date" id="date-picking" name="date-picker" class="borders ">
                           <div id="date-error" class="error-message borders "></div>
                       </div>
           
                       <div class="form-input-sections-workout borders workout-form-input-sections-label "> 
-                          <label for="time-picking" class="borders ">Time:</label>
+                          <label id="time-picking-label" for="time-picking" class="borders ">Time</label>
                           <input type="time" id="time-picking" name="time-picker" class="borders ">
                           <div id="time-error" class="error-message borders "></div>
                       </div>
           
                       <div class="form-input-sections-workout borders workout-form-input-sections-label ">
-                          <label for="workout-type" class="borders ">Workout Type</label>
+                          <label id="workout-type-label" for="workout-type" class="borders ">Workout Type</label>
                           <select id="workout-type" name="workout-selector" class="borders " >
                               <option value="" disabled selected>Select a Workout Type</option></option>
                               <option value="weight-training">Weight Training</option>
@@ -68,7 +68,7 @@
                           <div id="workout-type-error" class="error-message borders "></div>
                       </div>
 
-                      <button type="submit" id="submit-workout" class="borders form-input-sections form-input-sections-workout">Add</button>
+                      <button type="submit" id="submit-workout" class="borders form-input-sections form-input-sections-workout">Add workout</button>
 
                   </form>  
 
