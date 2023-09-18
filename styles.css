@@ -426,25 +426,24 @@ footer {
     background-color: rgba(0, 0, 0, 0.4); 
     /* Overlay background */
     
+    
 }
 
 
 
 .add-exercise-modal-content { /* INPUT FORM */
-    background-color: #fefefe;
-    margin: 300px auto;
-    width: 400px;
-    max-width: 600px;
-    height: 600px;
+    background-color: #131313;
+    margin: 200px auto;
+    width: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     border-radius: 5%;
-
-    
-    
+    color: #FAFAFA;
+    border: solid 1px #393939
 
 }
 
@@ -467,6 +466,8 @@ footer {
 
 #your-exercise-header {
     margin-bottom: 20px;
+
+    border: solid 1px yellow; 
 }
 
 #add-exercise-form { /* FORM CONTENT */
@@ -474,14 +475,13 @@ footer {
     flex-direction: column;
     justify-content: center;
     width: 80%;
-    height: ;
-    
-    /* border: solid 3px purple; */
+    border: solid 1px purple; 
     
 }
 
 .form-input-sections-exercise {
-    margin: 15px;
+    /* margin: 15px; */
+    border: solid 1px green;
 }
 
 .exercise-form-input-sections-label {
@@ -537,6 +537,13 @@ footer {
 
 
 /* ADD WORKOUT SECTION + ITEMS */
+
+#open-modal-exercise-button-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
 #open-modal-add-exercise-button {
     border: none;
@@ -597,7 +604,7 @@ footer {
 
 #your-exercise-display { /* DYNAMIC DOM DISPLAY FOR EXERCISES  */
     width: 100%;
-    border: solid 1px yellow;
+    /*border: solid 1px yellow;*/
 
 }
 
@@ -607,16 +614,16 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 2%;
-    border-radius: 50px ;
+    border-radius: 5px ;
     gap: 1px;
-    border: solid 1px black;
     padding: 0;
-    background-color: #525252;
+    background-color: #2d2d2d;
+    color: #FAFAFA
 }
 
-.exercise-items:hover {
+/*.exercise-items:hover {
     background-color: grey;
-}
+}*/
 
 .add-exercise-list-item-name {
     border: solid 1px lightgrey;
@@ -675,6 +682,7 @@ footer {
     justify-content: center;
     align-items: center;
     color: #FAFAFA;
+    
        
 }
 

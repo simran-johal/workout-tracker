@@ -429,15 +429,16 @@ function displayExercises(myExerciseList) {// logic of displaying dynamic exerci
 
 let divForWorkoutsDisplay = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
 let exerciseSect = document.getElementById('your-exercise-display')
+let exerciseSect2 = document.getElementById('add-exercise-section')
 let selectedWorkout = false;
 let currentWorkoutId = null;
 
 
 function removeDefaultBlankExerciseSect() { // logic to remove default page
 
-    let defaultExerciseSectDiv = exerciseSect.querySelector('.default-exercise-sect-div')
+    let defaultExerciseSectDiv = exerciseSect2.querySelector('.default-exercise-sect-div')
     if (defaultExerciseSectDiv) {
-        exerciseSect.removeChild(defaultExerciseSectDiv)
+        exerciseSect2.removeChild(defaultExerciseSectDiv)
     }
 
 }
@@ -455,7 +456,7 @@ function isMyWorkoutArrayEmpty() { // check if workout obj array is empty if so 
         let defaultExerciseSectDiv = document.createElement('div')
         defaultExerciseSectDiv.className = 'default-exercise-sect-div'
         defaultExerciseSectDiv.innerHTML = '<p>Add your workout and select it to start adding exercises.</p>'
-        exerciseSect.appendChild(defaultExerciseSectDiv)
+        exerciseSect2.appendChild(defaultExerciseSectDiv)
 
         return;
 
