@@ -510,7 +510,7 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
 
         // creating the delete button for the workoutItems > TURN INTO ITS OWN FUNC
         let workoutDeletebutton = document.createElement('button')
-        workoutDeletebutton.textContent = 'Delete'
+        workoutDeletebutton.innerHTML = '&times;' 
         workoutDeletebutton.className = 'workout-delete-button'
         workoutDeletebutton.setAttribute('data-workout-id', listItemId)
 
@@ -524,27 +524,6 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
 
 } 
 displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
-
-divForWorkoutsDisplay.addEventListener('click', function(event) {
-
-    if (event.target.className === 'workout-delete-button') {
-
-        event.stopPropagation();
-        let workoutId = event.target.getAttribute('data-workout-id'); // Retrieve the workout ID from the data attribute
-        
-        
-        myWorkoutList = myWorkoutList.filter(workout => workout.id != workoutId);
-
-        let exerciseSectContent = document.getElementById(`exercise-section-${workoutId}`);
-        console.log(`exercise-section-${workoutId}`)
-
-        if (exerciseSectContent) {
-            exerciseSectContent.remove();
-        }
-
-        displayWorkouts(myWorkoutList);
-    }
-});
 
 
 
@@ -644,7 +623,6 @@ function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorko
 }
 
 
-// DELETE BUTTON FUNCTIONALITY
 
 
 
