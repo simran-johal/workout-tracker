@@ -428,7 +428,7 @@ function displayExercises(myExerciseList) {// logic of displaying dynamic exerci
 // FUNCS FOR DISPLAYING INPUT DATA STORED IN ARRAYS TO THE DOM FOR ADD WORKOUT MODAL
 
 let divForWorkoutsDisplay = document.getElementById('your-workouts-display') // SELECT THE DISPLAY DIV CONTAINER
-let exerciseSect = document.getElementById('add-exercise-section')
+let exerciseSect = document.getElementById('your-exercise-display')
 let selectedWorkout = false;
 let currentWorkoutId = null;
 

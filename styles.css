@@ -80,7 +80,6 @@ footer {
     font-size: x-small;
 }
 
-
 .border {
     /*border: solid 1px purple;*/
 }
@@ -117,7 +116,7 @@ footer {
 
 
 
-.add-workout-modal-content { 
+.add-workout-modal-content { /* INPUT FORM */
     background-color: #131313;
     margin: 200px auto;
     width: 400px;
@@ -183,7 +182,7 @@ footer {
     
 }
 
-
+/* MODAL FORM WORKOUTS */
 
 
 #date-picking-label {
@@ -270,7 +269,8 @@ footer {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 0px;
-    cursor: pointer
+    margin-top: 5px; 
+    cursor: pointer;
     
 }
 
@@ -281,7 +281,7 @@ footer {
 #workout-h3-btn-container {
     background-color: #2e2e2e;
     padding: 20px;
-    /*border: solid 1px black;*/
+    /*border: solid 1px red;*/
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -304,7 +304,7 @@ footer {
 
 #add-workout-secondary-text {
     font-size: xx-small;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     padding: 0;
     color: #848484
     
@@ -340,14 +340,12 @@ footer {
     background-color: rgb(104, 104, 104);
 }
 
-
 .add-workout-list-item-date-time {
     margin-bottom: 5px;
     color: #FFE600;
     order: 3;
     
 }
-
 
 .add-workout-list-item-workout-type {
     /*border: solid 1px green;*/
@@ -357,6 +355,8 @@ footer {
     font-size: x-small;
    
 }
+
+
 
 .workout-delete-button {
     font-size: 20px;
@@ -384,11 +384,29 @@ footer {
 
 
 
-/* ADD EXERCISE BUTTON MODAL */
 
-#add-exercise-section {
-    background-color: #131313;
-    /*border: solid 1px yellow; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ADD EXERCISE SECTIONS MODAL */
+
+
+#add-exercise-section { /* ENTIRE SECTION */
+    background-color: #525252;
+    /* border: solid 1px yellow; */ 
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -410,7 +428,9 @@ footer {
     
 }
 
-.add-exercise-modal-content { 
+
+
+.add-exercise-modal-content { /* INPUT FORM */
     background-color: #fefefe;
     margin: 300px auto;
     width: 400px;
@@ -422,6 +442,9 @@ footer {
     align-items: center;
     position: relative;
     border-radius: 5%;
+
+    
+    
 
 }
 
@@ -442,19 +465,16 @@ footer {
     cursor: pointer;
 }
 
-.error-message {
-    color: red;
-}
-
 #your-exercise-header {
     margin-bottom: 20px;
 }
 
-#add-exercise-form {
+#add-exercise-form { /* FORM CONTENT */
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 80%;
+    height: ;
     
     /* border: solid 3px purple; */
     
@@ -474,27 +494,110 @@ footer {
     
 }
 
-#exercise-h3-btn-container {
-    background-color: lightgoldenrodyellow;
+/* MODAL FORM EXERCISES */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ADD WORKOUT SECTION + ITEMS */
+
+#open-modal-add-exercise-button {
+    border: none;
+    border-radius: 50px;
+    background-color: #FFE600;
     padding: 5px;
-    border: solid 1px lightgrey;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    margin-top: 5px; 
+    cursor: pointer;
+
+}
+
+
+#open-modal-add-exercise-button:hover {
+    background-color: #cfba03;
+
+}
+
+
+#exercise-h3-btn-container { /* CONTAINER FOR BUTTON & HEADER */
+    background-color: #525252;
+    padding: 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    color: #FAFAFA;
+    /*border: solid 1px red;*/
+   
     
 }
 
+#add-exercise-primary-text {
+    
+    /*border: solid 1px grey;*/
+    margin: 0;
+    padding: 0;
+    
+}
+
+#add-exercise-secondary-text {
+    font-size: xx-small;
+    margin-bottom: 0;
+    padding: 0;
+    color: #848484
+    
+    /*border: solid 1px grey;*/
+
+}
+
+/* divs for sections */
 
 
-/* EXERCISE ITEMS DISPLAYED IN DOM */
+/* divs for sections */
 
 
-#your-exercise-display {
-    border: solid 1px lightgray; 
+#your-exercise-display { /* DYNAMIC DOM DISPLAY FOR EXERCISES  */
     width: 100%;
-    
-    
+    border: solid 1px yellow;
 
 }
 
@@ -508,6 +611,7 @@ footer {
     gap: 1px;
     border: solid 1px black;
     padding: 0;
+    background-color: #525252;
 }
 
 .exercise-items:hover {
@@ -540,6 +644,9 @@ footer {
 }
 
 
+/* .exercise-delete-button */
+
+/* exercise-delete-button:hover */
 
 
 
@@ -548,7 +655,9 @@ footer {
 
 
 
-
+.error-message {
+    color: red;
+}
 
 
 
