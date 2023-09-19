@@ -443,6 +443,8 @@ function removeDefaultBlankExerciseSect() { // logic to remove default page
 
 }
 
+
+
 function isMyWorkoutArrayEmpty() { // check if workout obj array is empty if so create default page if not call removeDefault
 
     let exerciseSectContent = document.getElementsByName('exercise-sect-content')[0] 

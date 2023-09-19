@@ -119,9 +119,8 @@ footer {
 .add-workout-modal-content { /* INPUT FORM */
     background-color: #131313;
     margin: 200px auto;
-    width: 400px;
-    max-width: 600px;
-    height: 500px;
+    width: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,52 +134,57 @@ footer {
 }
 
 #cancel1 {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     position: absolute;
-    top: 15px;
-    right: 25px;
+    top: 10px;
+    right: 15px;
     border-radius: 50%;
-    padding: 5px 15px;
-    border: solid 1px black 
+    color: #FFE600
     
     
 }
 
 #cancel1:hover {
-    color: #000;
+    color: #cfba03;
     text-decoration: none;
     cursor: pointer;
 }
 
 #your-workout-header {
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    /* border: solid 1px blue; */
 }
 
 #add-workout-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80%;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
     
-    /* border: solid 3px purple; */
+    /* border: solid 1px purple; */
     
 }
 
 .form-input-sections-workout {
-    margin: 15px;
-}
-
-.workout-form-input-sections-label {
+    /* border: solid 1px yellow; */
+    margin: 10px;
+    box-sizing: border-box;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: left;
     flex-direction: column;
-    gap: 10px;
-    
-    
-    
+    gap: 5px;
 }
+
+/* .workout-form-input-sections-label {
+    
+} */
 
 /* MODAL FORM WORKOUTS */
 
@@ -237,12 +241,13 @@ footer {
 }
 
 #submit-workout {
-
     border: none;
     border-radius: 50px;
     background-color: #FFE600;
-    padding: 20px;
+    padding: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -431,7 +436,7 @@ footer {
 
 
 
-.add-exercise-modal-content { /* INPUT FORM */
+.add-exercise-modal-content { /* INPUT FORM WHOLE*/
     background-color: #131313;
     margin: 200px auto;
     width: 300px;
@@ -443,59 +448,94 @@ footer {
     position: relative;
     border-radius: 5%;
     color: #FAFAFA;
-    border: solid 1px #393939
-
+    border: solid 1px #393939;
+    padding-bottom: 5px;
 }
 
 #cancel2 {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     position: absolute;
-    top: 15px;
-    right: 25px;
+    top: 10px;
+    right: 15px;
     border-radius: 50%;
-    padding: 5px 15px;
-    border: solid 1px black
+    color: #FFE600;
 }
 
 #cancel2:hover {
-    color: #000;
+    color: #cfba03;
     text-decoration: none;
     cursor: pointer;
 }
 
 #your-exercise-header {
     margin-bottom: 20px;
-
-    border: solid 1px yellow; 
+    /* border: solid 1px yellow;  */
 }
 
-#add-exercise-form { /* FORM CONTENT */
+#add-exercise-form { /* INPUT FORM ONLY */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80%;
-    border: solid 1px purple; 
-    
+    /* border: solid 1px purple;  */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5px;  
 }
 
-.form-input-sections-exercise {
-    /* margin: 15px; */
-    border: solid 1px green;
-}
-
-.exercise-form-input-sections-label {
+.form-input-sections-exercise { /* LABEL+INPUT INDIVIDUAL */
+    margin: 0px; 
+    box-sizing: border-box;
+    width: 80% ;
+    height: 80% ;
     display: flex;
     justify-content: center;
     align-items: left;
     flex-direction: column;
-    gap: 10px;
-    
-    
+    gap: 5px;
+    /* padding: 5px; */
+    /* border: solid 1px yellow; */
+
 }
+
+/* .exercise-form-input-sections-label {
+    
+} */
 
 /* MODAL FORM EXERCISES */
 
+#exercise-picking-label, #number-of-sets-label, #number-of-reps-label, #rest-time-label, #rir-label {
+    color:#b8b8b8
+}
+
+#exercise-name, #number-of-sets, #number-of-reps, #rest-time, #reps-in-reserve {
+    background-color: #2f2e2e;
+    border: #858585;
+    border-radius: 4px;
+    color: #b8b8b8;
+    padding: 5px;
+    cursor: pointer
+   
+}
+
+
+#submit-exercise {
+
+    border: none;
+    border-radius: 50px;
+    background-color: #FFE600;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+    
+}
+
+
+#submit-exercise:hover {
+    background-color: #cfba03;
+
+}
 
 
 
@@ -517,26 +557,7 @@ footer {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ADD WORKOUT SECTION + ITEMS */
+/* ADD EXERCISE SECTION + ITEMS */
 
 #open-modal-exercise-button-container {
     display: flex;
