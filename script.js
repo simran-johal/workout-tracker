@@ -508,6 +508,12 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
 
         exerciseSect.appendChild(exerciseSectContent)
 
+
+
+
+
+
+
         // creating the delete button for the workoutItems > TURN INTO ITS OWN FUNC
         let workoutDeletebutton = document.createElement('button')
         workoutDeletebutton.innerHTML = '&times;' 
@@ -516,14 +522,35 @@ function displayWorkouts(myWorkoutList) { // if objArray not empty display data 
 
         displayWorkoutItems.appendChild(workoutDeletebutton);
 
-
         selectedWorkoutItem(displayWorkoutItems, listItemId)
-       
 
     }); 
 
 } 
 displayWorkouts(myWorkoutList) // on submit run func that displays it to dom
+
+
+
+divForWorkoutsDisplay.addEventListener('click', function(event) {
+    if (event.target.classList.contains('workout-delete-button')) {
+
+        const workoutIdToDelete = event.target.getAttribute('data-workout-id'); 
+        console.log("check list before", myWorkoutList)
+        myWorkoutList = myWorkoutList.filter(workout => String(workout.id) !== workoutIdToDelete);
+        console.log("check right id", workoutIdToDelete)
+        console.log("check list after", myWorkoutList)
+              
+                
+        displayWorkouts(myWorkoutList);
+    }
+})
+
+
+
+
+
+
+
 
 
 
@@ -622,7 +649,7 @@ function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorko
          displayExerciseItems.setAttribute('exercise-id', listItemId) // giving our exercise items an attribute of the #id
 
 
-         // creating the delete button for the workoutItems > TURN INTO ITS OWN FUNC
+         // creating the delete button for the exerciseItems > TURN INTO ITS OWN FUNC
         let exerciseDeletebutton = document.createElement('button')
         exerciseDeletebutton.innerHTML = '&times;' 
         exerciseDeletebutton.className = 'exercise-delete-button'

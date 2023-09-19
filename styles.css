@@ -345,6 +345,10 @@ footer {
     background-color: rgb(104, 104, 104);
 }
 
+.workout-items:active {
+    background-color: rgb(104, 104, 104);
+}
+
 .add-workout-list-item-date-time {
     margin-bottom: 5px;
     color: #FFE600;
@@ -535,7 +539,6 @@ footer {
     background-color: #cfba03;
 
 }
-
 
 
 
