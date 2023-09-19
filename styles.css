@@ -361,8 +361,6 @@ footer {
    
 }
 
-
-
 .workout-delete-button {
     font-size: 20px;
     position: absolute;
@@ -383,7 +381,7 @@ footer {
 }
 
 
-
+ 
 
 
 
@@ -449,7 +447,8 @@ footer {
     border-radius: 5%;
     color: #FAFAFA;
     border: solid 1px #393939;
-    padding-bottom: 5px;
+    padding-bottom: 25px;
+    padding-top: 10px
 }
 
 #cancel2 {
@@ -638,43 +637,54 @@ footer {
     border-radius: 5px ;
     gap: 1px;
     padding: 0;
-    background-color: #2d2d2d;
-    color: #FAFAFA
+    background-color: #656565 ;
+    color: #FAFAFA;
+    position: relative;
 }
 
-/*.exercise-items:hover {
-    background-color: grey;
-}*/
+
 
 .add-exercise-list-item-name {
-    border: solid 1px lightgrey;
+    /* border: solid 1px lightgrey; */
     margin: 5%;
 }
 
 .add-exercise-list-item-sets {
-    border: solid 1px lightgrey;
+    /* border: solid 1px lightgrey; */
     margin: 5%;
 }
 
 .add-exercise-list-item-reps {
-    border: solid 1px lightgrey;
+    /* border: solid 1px lightgrey; */
     margin: 5%;
 }
 
 .add-exercise-list-item-rest {
-    border: solid 1px lightgrey;
+    /* border: solid 1px lightgrey; */
     margin: 5%;
 }
 
 .add-exercise-list-item-rir {
-    border: solid 1px lightgrey;
+    /* border: solid 1px lightgrey; */
     margin: 5%;
 }
 
 
-/* .exercise-delete-button */
+.exercise-delete-button {
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    border-radius: 5px;
+    border: none;
+    background: none;
+    color: #131313
+}
 
-/* exercise-delete-button:hover */
+.exercise-delete-button:hover {
+    cursor: pointer;
+    color: darkgrey;
+}
 
 
 
@@ -685,6 +695,7 @@ footer {
 
 .error-message {
     color: red;
+    
 }
 
 

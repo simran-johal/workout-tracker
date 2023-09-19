@@ -286,6 +286,7 @@ manageExerciseModal();
 let myWorkoutList = []
 const myExerciseList = []
 let workoutId = 0 // counter to associate exercise section to it
+let exerciseId = 0
 
 
 function Workout(date, time, workoutType) { // WORKOUT OBJECT BUILDER AND STORING IN ARRAY
@@ -301,12 +302,12 @@ function createWorkoutObj(date, time, workoutType, id, exercises) { // WORKOUT H
 
 }
 function Exercise(exerciseName, setsNumber, repsNumber, restTime, rir) { // EXERCISE OBJECT BUILDER AND STORING IN ARRAY
-    Object.assign(this, {exerciseName, setsNumber, repsNumber, restTime, rir})
+    Object.assign(this, {exerciseName, setsNumber, repsNumber, restTime, rir, id: exerciseId++})
     
 }
-function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir) {
+function createExerciseObj(exerciseName, setsNumber, repsNumber, restTime, rir, id) {
     
-    let currentExerciseStorer = new Exercise(exerciseName, setsNumber, repsNumber, restTime, rir)
+    let currentExerciseStorer = new Exercise(exerciseName, setsNumber, repsNumber, restTime, rir, id)
     myExerciseList.push(currentExerciseStorer) // pushing to global myExerciseArray
     addExercise(currentExerciseStorer) // passing to addExercise func (to add it to associated workout)
 
@@ -616,6 +617,19 @@ function displayExercisesForWorkout(currentWorkoutId) { // recieves currentWorko
          displayExerciseItems.appendChild(repsNumberElement)
          displayExerciseItems.appendChild(restTimeElement)
          displayExerciseItems.appendChild(rirElement)
+
+         let listItemId = listItem.id
+         displayExerciseItems.setAttribute('exercise-id', listItemId) // giving our exercise items an attribute of the #id
+
+
+         // creating the delete button for the workoutItems > TURN INTO ITS OWN FUNC
+        let exerciseDeletebutton = document.createElement('button')
+        exerciseDeletebutton.innerHTML = '&times;' 
+        exerciseDeletebutton.className = 'exercise-delete-button'
+        exerciseDeletebutton.setAttribute('data-exercise-id', listItemId)
+
+        displayExerciseItems.appendChild(exerciseDeletebutton);
+        console.log("id check", exerciseDeletebutton.attributes)
 
     })
 
